@@ -1,8 +1,21 @@
-import classes from './ProductItem.module.css'
-import ProductItemForm from './ProductItemForm';
+import { useContext } from "react";
+import CartContext from "../../../Store/cart-context";
+import classes from "./ProductItem.module.css";
+import ProductItemForm from "./ProductItemForm";
 
 function ProductItem(props) {
-    const price = `${props.price.toFixed(2)} Ft`
+  const cartCtx = useContext(CartContext);
+  const price = `${props.price.toFixed(2)} Ft`;
+
+  const addToCartHandler = (amount) => {
+    cartCtx.addItem({
+      id: props.id,
+      name: props.name,
+      amount: amount,
+      price: props.price
+    })
+  };
+
   return (
     <li className={classes.product}>
       <div>
@@ -11,7 +24,7 @@ function ProductItem(props) {
         <div className={classes.price}>{price}</div>
       </div>
       <div>
-         <ProductItemForm></ProductItemForm>
+        <ProductItemForm onAddToCart={addToCartHandler}></ProductItemForm>
       </div>
     </li>
   );
