@@ -8,10 +8,14 @@
   
   .product h3 {
     margin: 0 0 0.25rem 0;
+    max-width: 40rem;
+    padding-bottom: 2rem;
   }
   
   .description {
     font-style: italic;
+    max-width: 40rem;
+    padding-bottom: 1rem;
   }
   
   .price {
@@ -19,4 +23,9 @@
     font-weight: bold;
     color: #1cbe4c;
     font-size: 1.25rem;
+  }
+
+  .product img{
+    max-width: 30%;
+    padding-bottom: 1rem;
   }

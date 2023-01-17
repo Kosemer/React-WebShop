@@ -1,7 +1,8 @@
 import classes from './CartItem.module.css';
 
 const CartItem = (props) => {
-  const price = `$${props.price.toFixed(2)}`;
+  //const price = `$${props.price.toFixed(3)}`;
+  const price = props.price.toLocaleString("hu-HU", {style:"currency", currency:"HUF", maximumFractionDigits: 0});
 
   return (
     <li className={classes['cart-item']}>
@@ -12,6 +13,7 @@ const CartItem = (props) => {
           <span className={classes.amount}>x {props.amount}</span>
         </div>
       </div>
+      <img alt='sa' src={props.image} className={classes.cartImage}></img>
       <div className={classes.actions}>
         <button onClick={props.onRemove}>−</button>
         <button onClick={props.onAdd}>+</button>
