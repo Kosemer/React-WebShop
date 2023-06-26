@@ -12,7 +12,7 @@ const AvailableProducts = (props) => {
   ///
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("");
-  const [noResults, setNoResults] = useState(false); // új állapot
+  const [noResults, setNoResults] = useState(false);
   const [parentId2, setParentId] = useState("")
 
   useEffect(() => {
