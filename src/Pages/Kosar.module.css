@@ -1,0 +1,46 @@
+.products {
+  display: flex;
+  max-width: 90rem;
+  width: 90%;
+  margin: 2rem auto;
+  animation: products-appear 1s ease-out forwards;
+}
+
+.title {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+}
+
+.items {
+  max-width: 110rem;
+  width: 70%;
+  margin: 2rem auto;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+.amount {
+  max-width: 22rem;
+  width: 30%;
+  margin: 2rem auto;
+}
+
+.progressBar{
+  max-width: 110rem;
+  width: 70%;
+  margin: 2rem auto;
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  .progressBar{
+    max-width: 20rem;
+    width: 100%;
+    margin: 2rem auto;
+    list-style: none;
+  }
+}

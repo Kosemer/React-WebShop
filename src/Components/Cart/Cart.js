@@ -1,15 +1,22 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import CartContext from "../../Store/cart-context";
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
+
 function Cart(props) {
   const cartCtx = useContext(CartContext);
+  const navigate = useNavigate()
+
+  const navigateCart = () => {
+    navigate("/kosar")
+    props.hideCartHandler()
+  }
 
   //const totalAmount = `${cartCtx.totalAmount.toFixed(3)} Ft`;
-  const test = cartCtx.totalAmount.toLocaleString("hu-HU", {style:"currency", currency:"HUF", maximumFractionDigits: 0})
-  console.log(test)
+  const totalAmount = cartCtx.totalAmount.toLocaleString("hu-HU", {style:"currency", currency:"HUF", maximumFractionDigits: 0})
   //const totalAmount = `${cartCtx.totalAmount} Ft`;
   const hasItems = cartCtx.items.length > 0;
 
@@ -20,6 +27,19 @@ function Cart(props) {
   const cartRemoveHandler = (id) => {
     cartCtx.removeItem(id)
   };
+
+  //ÜRES A KOSÁR VAGY NEM
+  /*const { items } = cartCtx;
+  const [cartIsEmpty, setCartIsEmpty] = useState(false);
+
+  useEffect(() => {
+    if (items.length === 0) {
+      setCartIsEmpty(false);
+    }
+    if (items.length > 0) {
+      setCartIsEmpty(true);
+    }
+  }, [items]);*/
 
   const cartItems = (
     <ul className={classes["cart-items"]}>
@@ -41,9 +61,10 @@ function Cart(props) {
     <Modal>
       {cartItems}
       <div className={classes.total}>
-        <span>Total Amout</span>
-        <span>{test}</span>
+        <p>Teljes összeg:</p>
+        <span className={classes.totalAmount}>{totalAmount}</span>
       </div>
+
       <div className={classes.actions}>
         <button
           className={classes["button--alt"]}
@@ -51,7 +72,7 @@ function Cart(props) {
         >
           Close
         </button>
-        {hasItems && <button className={classes.button}>Order</button>}
+        {hasItems && <button className={classes.button} onClick={navigateCart}>Order</button>}
       </div>
     </Modal>
   );

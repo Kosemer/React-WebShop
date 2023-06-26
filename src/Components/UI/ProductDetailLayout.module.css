@@ -1,0 +1,122 @@
+/*PRODUCT AND PRICE*/
+.product {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.productTitle {
+  max-width: 60%;
+}
+
+.product img {
+  max-width: 70%;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 40%;
+}
+
+.name {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.inStock {
+  color: green;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.price {
+  margin-top: 0.25rem;
+  font-weight: bold;
+  color: #0066cc;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.addToCartButton {
+  cursor: pointer;
+  font-size: 1.2rem;
+  background-color: #0066cc;
+  color: #ffffff;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+}
+
+.addToCartButton:hover {
+  background-color: #2580da;
+}
+
+.delivery {
+  margin-top: 1rem;
+  color: black;
+  font-size: 0.8rem;
+  display: flex;
+}
+
+.deliveryTo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0rem 0rem;
+}
+
+.deliveryTo img {
+  display: block;
+  float: left;
+  margin-right: 10px;
+  cursor: default;
+}
+
+.deliveryText {
+  display: block;
+  float: right;
+}
+
+.personalReceipt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0rem 0rem;
+}
+
+.personalReceipt img {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    cursor: default;
+}
+
+/*PRODUCT AND PRICE*/
+
+/*DESCRIPTION CONTAINER*/
+
+.descriptionContainer {
+  margin: 3rem;
+}
+
+.description {
+  font-style: italic;
+  padding-bottom: 1rem;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.productName {
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+/*DESCRIPTION CONTAINER*/

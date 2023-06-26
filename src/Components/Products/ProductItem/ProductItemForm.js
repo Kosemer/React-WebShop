@@ -27,7 +27,7 @@ function ProductItemForm(props) {
     <form className={classes.form} onSubmit={submitHandler}>
       <Input
         ref={amountInputRef}
-        label="Amount"
+        label="Mennyiség:"
         input={{
           id: "amount" + props.id,
           type: "number",
@@ -37,7 +37,7 @@ function ProductItemForm(props) {
           defaultValue: "1",
         }}
       ></Input>
-      <button>+ Add</button>
+      <button>+ Kosárba</button>
       {!amountIsValid && <p>Please enter a valid amount.</p>}
     </form>
   );

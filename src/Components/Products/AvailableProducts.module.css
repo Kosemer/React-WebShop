@@ -1,5 +1,5 @@
 .products {
-    max-width: 60rem;
+    max-width: 70rem;
     width: 90%;
     margin: 2rem auto;
     animation: products-appear 1s ease-out forwards;
@@ -9,6 +9,69 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  input::placeholder {
+    color: rgb(25, 25, 25);
+  }
+
+  .noResults{
+    text-align: center;
+    font-weight: 600;
+  }
+
+.filterBar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background-color: rgba(67, 69, 67, 0.3);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.productCount{
+  padding: 1rem;
+  color: #2e2d2d;
+}
+
+.searchBar input {
+  font-size: 1rem; /* növeli az input mező méretét */
+  padding: 0.2rem 0.6rem; /* növeli a padding méretét */
+}
+
+.sortBy select {
+  font-size: 1rem; /* növeli a select méretét */
+  padding: 0.2rem 0.6rem; /* növeli a padding méretét */
+  color: #2e2d2d;
+}
+  
+  .searchBar,
+  .sortBy {
+    display: flex;
+    align-items: center;
+  }
+  
+  .searchBar {
+    margin-right: 1rem;
+  }
+
+  .categoryDescription{
+    padding: 1rem;
+  }
+
+  .categoryDescription h2{
+    color: #0066cc;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+  }
+
+  .description{
+    color: rgb(58, 54, 54);
   }
   
   @keyframes products-appear {

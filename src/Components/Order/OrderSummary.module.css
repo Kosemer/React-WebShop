@@ -1,0 +1,108 @@
+.summaryCost {
+    font-size: 1.2rem;
+    font-weight: 100;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+  }
+  
+  .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .line {
+    border: 1px solid #aeaeae;
+  }
+
+  .totalAmountShippingCost {
+    
+  }
+
+.total {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .summary {
+    font-size: 1.6rem;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    text-align: center;
+    color: black;
+  }
+
+  .pAmount{
+    color: black;
+  }
+
+.shipping{
+    color: #24ca12;
+  }
+
+.line {
+    border: 1px solid #aeaeae;
+  }
+  
+  .amount {
+    max-width: 22rem;
+    width: 30%;
+    margin: 2rem auto;
+  }
+  
+  .totalAmountShippingCost {
+    padding-bottom: 2rem;
+    color: black;
+  }
+  
+  .shipping{
+    color: #24ca12;
+  }
+  
+  .btn {
+    font-family: Roboto, sans-serif;
+    font-weight: 0;
+    font-size: 18px;
+    color: #fff;
+    background-color: #0066cc;
+    padding: 10px 50px;
+    border: solid #0066cc 2px;
+    box-shadow: none;
+    border-radius: 9px;
+    transition: 1000ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+  
+  .btn:hover {
+    transition: 1000ms;
+    padding: 10px 70px;
+    transform: translateY(-0px);
+    background-color: #fff;
+    color: #0066cc;
+    border: solid 2px #0066cc;
+  }
+
+  @media (max-width: 768px) {
+    .container{
+      width: 100%;
+      padding: 0rem 1rem;
+    }
+    .amount {
+      max-width: 22rem;
+      width: 60%;
+      margin: 2rem auto;
+    }
+  }

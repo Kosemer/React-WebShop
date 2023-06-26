@@ -1,9 +1,24 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import CartContext from "./cart-context";
 
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("cartItems"));
 const defaultCartState = {
-  items: [],
-  totalAmount: 0,
+  // A localStorage- ből olvasom ki az adatokat, ha van.
+  items: cartFromLocalStorage ? cartFromLocalStorage.items : [],
+  totalAmount: cartFromLocalStorage ? cartFromLocalStorage.totalAmount : 0,
+  shippingCost: 1699,
+  isLoggedIn: true,
+  isBurgerMenuClicked: false,
+  orderStatus: {
+    cart: false,
+    order: false,
+    data: false,
+    confirmation: false,
+  },
+  navigatePages: {
+    deliveryMethod: '/delivery-method',
+    deliveryDetails: '/delivery-details'
+  }
 };
 
 const cartReducer = (state, action) => {
@@ -20,6 +35,7 @@ const cartReducer = (state, action) => {
 
     let updatedItems;
     let updatedItem;
+    let updatedShippingCost;
 
     if (existingCartItem) {
       // Ha az "existingCartItem" igaz, tehát van már ilyen eleme a kosarunknak
@@ -35,13 +51,29 @@ const cartReducer = (state, action) => {
       updatedItem = { ...action.item }; // Akkor az "updatedItem" egy vadonatúj elem, ahova másolom az "action.item"-et (Az action.item az "ADD" dispatch-ből jön, tehát amit a gombbal épp hozzáadsz a kosárhoz)
       updatedItems = state.items.concat(action.item); // Az "updatedItems" pedig egyenlő lesz a "state.items" és az "action.item" egyesítésével. Tehát a már meglévő kosár tartalma (state.items) és az újonnan hozzáadott elem (action.item) egyesítése egy új tömbbe.
     }
-
+    // SZÁLLÍTÁSI KÖLTSÉG
+    if (updatedTotalAmount >= 100000) {
+      updatedShippingCost = "Ingyenes";
+    }
+    if (updatedTotalAmount < 100000) {
+      updatedShippingCost = defaultCartState.shippingCost;
+    }
+    // LOCALSTORAGE UPDTAE
+    const cartItems = {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+      shippingCost: updatedShippingCost,
+    };
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+   // LOCALSTORAGE UPDTAE
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
+      shippingCost: updatedShippingCost,
     };
   }
   if (action.type === "REMOVE") {
+    let updatedShippingCost = 0;
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.id
     );
@@ -56,16 +88,31 @@ const cartReducer = (state, action) => {
     } else {
       // Ha több van belőle mint egy, akkor meg akarom tartani az elemet a tömbben, csak az összeget akarom frissíteni.
       const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
-      updatedItems = [ ...state.items ];
+      updatedItems = [...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
     }
-
+    // SZÁLLÍTÁSI KÖLTSÉG
+    if (updatedTotalAmount > 100000) {
+      updatedShippingCost = "Ingyenes";
+    }
+    if (updatedTotalAmount < 100000) {
+      updatedShippingCost = defaultCartState.shippingCost;
+    }
+   // LOCALSTORAGE UPDTAE
+    const cartItems = {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+      shippingCost: updatedShippingCost,
+    };
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+   // LOCALSTORAGE UPDTAE
     return {
       items: updatedItems,
-      totalAmount: updatedTotalAmount
-    }
+      totalAmount: updatedTotalAmount,
+      shippingCost: updatedShippingCost,
+    };
   }
-  return defaultCartState;
+  return { defaultCartState };
 };
 
 function CartProvider(props) {
@@ -73,6 +120,9 @@ function CartProvider(props) {
     cartReducer,
     defaultCartState
   );
+
+  const [cssMobile, setCssMobile] = useState(true);
+  
 
   const addItemToCartHandler = (item) => {
     dispatchCartAction({ type: "ADD", item: item });
@@ -82,11 +132,35 @@ function CartProvider(props) {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
 
+  /////
+  const replaceCartItems = (items) => {
+    dispatchCartAction({
+      type: "REPLACE",
+      items,
+    });
+  };
+  
+
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
+    shippingCost: cartState.shippingCost,
+    isLoggedIn: true,
+    orderStatus: {
+      cart: false,
+      order: false,
+      data: false,
+      confirmation: false
+    },
+    navigatePages: {
+      deliveryMethod: '/delivery-method',
+      deliveryDetails: '/delivery-details'
+    },
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
+    cssMobile: cssMobile,
+    setCssMobile: setCssMobile,
+    replaceCartItems: replaceCartItems,
   };
 
   return (

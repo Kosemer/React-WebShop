@@ -1,31 +1,70 @@
 .product {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #ccc;
-  }
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  flex-basis: calc(33.33% - 2rem); /* 2rem is the margin between items */
+  height: 100%;
+}
+
+.productTitle {
+  max-width: 100%;
+  text-align: center;
+}
+
+.priceButton{
+  text-align: center;
+}
+
+.addToCartButton {
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: #0066cc;
+  color: #ffffff;
+  padding: 0.8rem 1rem;
+  width: 60%;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+}
+
+.addToCartButton:hover {
+  background-color: #2580da;
+}
+
+.imgBox{
   
-  .product h3 {
-    margin: 0 0 0.25rem 0;
-    max-width: 40rem;
-    padding-bottom: 2rem;
-  }
-  
-  .description {
+  height: 100%;
+  object-fit: contain; /* vagy object-fit: cover; */
+}
+
+
+.product h3 {
+  padding-bottom: 2rem;
+  cursor: pointer;
+}
+
+/*.description {
     font-style: italic;
     max-width: 40rem;
     padding-bottom: 1rem;
-  }
-  
-  .price {
-    margin-top: 0.25rem;
-    font-weight: bold;
-    color: #1cbe4c;
-    font-size: 1.25rem;
-  }
+  }*/
 
-  .product img{
-    max-width: 30%;
-    padding-bottom: 1rem;
-  }
+.price {
+  margin-top: auto;
+  font-weight: bold;
+  color: #0066cc;
+  font-size: 1.25rem;
+}
+
+.product img {
+  max-width: 80%;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  cursor: pointer;
+}
+
+.productName {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+}

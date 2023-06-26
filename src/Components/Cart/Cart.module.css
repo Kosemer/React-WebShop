@@ -8,22 +8,35 @@
   
   .total {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 1rem 0;
+    background-color: #3f3f3f;
+    padding: 0.5rem;
+    border-radius: 15px;
+    width: 50%;
+  }
+
+
+  p{
+    color: white;
   }
   
   .actions {
     text-align: right;
+  }
+
+  .totalAmount{
+    color: #ffffff;
   }
   
   .actions button {
     font: inherit;
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid #1cbe4c;
+    border: 1px solid #0066cc;
     padding: 0.5rem 2rem;
     border-radius: 25px;
     margin-left: 1rem;
@@ -31,21 +44,57 @@
   
   .actions button:hover,
   .actions button:active {
-    background-color: #1cbe4c;
-    border-color: #1cbe4c;
+    background-color: #0066cc;
+    border-color: #0066cc;
     color: white;
   }
   
   .actions .button--alt {
-    color: #1cbe4c;
+    color: #0066cc;
   }
 
   .actions .button:hover {
     background-color: #ffffff;
-    color: #1cbe4c;
+    color: #0066cc;
   }
   
   .actions .button {
-    background-color: #1cbe4c;
+    background-color: #0066cc;
     color: white;
+  }
+
+  @media (max-width: 768px) {
+    .cart-items {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 25rem;
+      overflow: scroll;
+    }
+    .total {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1rem;
+      margin: 1rem 0;
+      background-color: #3f3f3f;
+      padding: 0.5rem;
+      border-radius: 15px;
+      width: 100%;
+    }
+    
+    .actions {
+      text-align: center;
+    }
+    
+    .actions button {
+      font: inherit;
+      cursor: pointer;
+      background-color: transparent;
+      border: 1px solid #0066cc;
+      padding: 0.5rem 2rem;
+      border-radius: 25px;
+      margin-left: 1rem;
+    }
   }

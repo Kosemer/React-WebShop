@@ -1,0 +1,272 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+  }
+  
+  .slider {
+    width: 100%;
+    background-color: gray;
+    text-align: center;
+  }
+  
+  .topicBoxes {
+    width: 90%;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  
+  .topicBoxes div {
+    border: 1px solid #ffffff;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    background-color: #ffffff;
+    line-height: 35px;
+    cursor: pointer;
+  }
+  
+  .topicBoxes div:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .boxesIcon {
+    height: 35px; /* ha ezt változtatod, akkor a line-height értéke is ugyanennyi legyen a topicBoxes div-nél */
+    margin-right: 10px; /* térköz a szöveg és a kép között */
+    float: left;
+  }
+  
+  .popularProducts {
+    width: 70%;
+    background-color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .product {
+    flex-basis: calc(25% - 1rem);
+    padding-bottom: 1rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+    
+  .imageBox {
+    width: 100%;
+    height: 300px; /* példa érték */
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .productImage {
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+  }
+  
+  .description {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .productTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    width: 90%;
+    cursor: pointer;
+  }
+  
+  .price {
+    font-size: 1.3rem;
+    font-weight: 600;
+    width: 100%;
+    word-wrap: break-word;
+    color: #e90d0d;
+  }
+  
+  .newAndDicountedproducts {
+    width: 70%;
+    background-color: #494345;
+    text-align: center;
+  }
+  
+  .newAndDicountedproducts div {
+    border: 1px solid #ffffff;
+    display: inline-block;
+    padding: 10rem 6rem;
+    margin: 0.5rem;
+  }
+  
+  .whatsNew {
+    width: 70%;
+    text-align: center;
+  }
+  
+  .whatsNew div {
+    border: 1px solid #ffffff;
+    display: block;
+    margin: 0.5rem;
+    height: 0;
+    padding-bottom: 50%;
+    position: relative;
+  }
+  
+  .whatsNew img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  .title {
+    text-align: left;
+    color: #1d1b1b;
+  }
+  
+  .newTitle {
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    text-align: left;
+    padding-left: 1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  /*RESPONSIVE*/
+  
+  /*MOBIL*/
+  @media screen and (max-width: 767px) {
+    .newTitle {
+      text-align: center;
+      font-size: 0.8rem;
+      padding-left: 0rem;
+    }
+    .topicBoxes {
+      width: 100%;
+      text-align: center;
+    }
+    .topicBoxes div {
+      display: inline-block;
+      width: calc(
+        50% - 1rem
+      ); /* 2 elem egymás mellé kerüléséhez 50%-os szélességet kell beállítani */
+      margin-left: auto; /* az első elemet jobbra igazítjuk */
+      margin-right: auto; /* a második elemet balra igazítjuk */
+      padding: 0.5rem 0.8rem;
+      margin: 0.5rem;
+      font-size: 0.8rem;
+      text-align: center;
+      line-height: 35px;
+    }
+  
+    .boxesIcon {
+      height: 30px; /* a kép mérete */
+      margin-right: 3px; /* térköz a szöveg és a kép között */
+      float: left;
+    }
+  
+    /* PRODUCTS */
+  
+    .product {
+      flex-basis: calc(25% - 1rem);
+      padding-bottom: 1rem;
+      margin: 0.5rem;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+  
+    .popularProducts div {
+      flex-basis: calc(50% - 1rem);
+      padding-bottom: 1rem;
+    }
+  
+    .imageBox {
+      width: 100%;
+      height: 200px; /* példa érték */
+      overflow: hidden;
+    }
+    
+    .productImage {
+      width: 100%;
+      height: 100%;
+      object-fit:contain;
+    }
+  
+    .description {
+      width: 90%;
+      margin: 0 auto;
+    }
+  
+    .productTitle {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+  
+    .price {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  
+    .popularProducts {
+      width: 100%;
+    }
+  }
+  
+  /*TABLET*/
+  @media screen and (min-width: 767px) and (max-width: 1023px) {
+    .popularProducts div {
+      flex-basis: calc(33.33% - 1rem);
+    }
+  
+    .product {
+      padding-bottom: 1rem;
+    }
+  
+    .imageBox {
+      width: 100%;
+      height: 200px; /* példa érték */
+      overflow: hidden;
+    }
+    
+    .productImage {
+      width: 100%;
+      height: 100%;
+      object-fit:contain;
+    }
+  
+    .description {
+      width: 100%;
+      margin: 0 auto;
+    }
+  
+    .productTitle {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  
+    .price {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .whatsNew {
+      width: 90%;
+    }
+    .newAndDicountedproducts {
+      width: 90%;
+    }
+    .popularProducts {
+      width: 90%;
+    }
+  }

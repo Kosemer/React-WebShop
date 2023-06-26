@@ -8,16 +8,18 @@ const CartItem = (props) => {
     <li className={classes['cart-item']}>
       <div>
         <h2>{props.name}</h2>
+        
         <div className={classes.summary}>
+          <img alt='sa' src={props.image} className={classes.cartImage}></img>
           <span className={classes.price}>{price}</span>
           <span className={classes.amount}>x {props.amount}</span>
         </div>
       </div>
-      <img alt='sa' src={props.image} className={classes.cartImage}></img>
       <div className={classes.actions}>
         <button onClick={props.onRemove}>−</button>
         <button onClick={props.onAdd}>+</button>
       </div>
+      
     </li>
   );
 };

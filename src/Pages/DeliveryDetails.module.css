@@ -1,0 +1,64 @@
+.progressBar{
+    max-width: 110rem;
+    width: 70%;
+    margin: 2rem auto;
+    list-style: none;
+  }
+
+  .products {
+    display: flex;
+    max-width: 90rem;
+    width: 90%;
+    margin: 2rem auto;
+    animation: products-appear 1s ease-out forwards;
+  }
+
+  .items {
+    max-width: 110rem;
+    width: 70%;
+    margin: 2rem auto;
+    list-style: none;
+  }
+
+  .amount {
+    max-width: 22rem;
+    width: 30%;
+    margin: 2rem auto;
+  }
+
+  .titleBox{
+    background-color: #c5ddf5;
+    padding: 1rem;
+  }
+
+  .fields {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+  }
+  
+  .fields input {
+    height: 45px;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .inputBox{
+    width: calc(100% / 2 - 20px);
+  }
+
+  .shortField{
+    width: 40%;
+  }
+
+ .fields input {
+    border-radius: 10px;
+    border: 1px solid;
+    padding: 0.3rem;
+    margin-bottom: 1rem;
+  }
+
+  p, input[type="checkbox"] {
+    display: inline;
+    margin-right: 1rem;
+  }
