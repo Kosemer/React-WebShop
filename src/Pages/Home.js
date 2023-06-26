@@ -13,28 +13,36 @@ import msi from "../Assets/videoCard.png";
 import motherboard from "../Assets/motherboard.png";
 import ram from "../Assets/ram.png";
 import cooler from "../Assets/cooler.png";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
+  const navigateClick = (page) => {
+    navigate(`/${page}`);
+  }
+
   return (
     <div className={classes.container}>
       <div className={classes.slider}>Slider</div>
       <section className={classes.topicBoxes}>
-        <div>
+        <div onClick={() => navigateClick("merevlemezek")}>
           <img src={hardDrive} className={classes.boxesIcon} alt="hardDrive"></img>Merevlemezek
         </div>
-        <div>
+        <div onClick={() => navigateClick("processzorok")}>
           <img src={processor} className={classes.boxesIcon} alt="processor"></img>Processzorok
         </div>
-        <div>
+        <div onClick={() => navigateClick("videokartyak")}>
           <img src={videoCard} className={classes.boxesIcon} alt="videoCard"></img>Videókártyák
         </div>
-        <div>
+        <div onClick={() => navigateClick("alaplapok")}>
           <img src={motherboard} className={classes.boxesIcon} alt="motherboard"></img>Alaplapok
         </div>
-        <div>
+        <div onClick={() => navigateClick("memoriak")}>
           <img src={ram} className={classes.boxesIcon} alt="ram"></img>Memóriák
         </div>
-        <div>
+        <div onClick={() => navigateClick("merevlemezek")}>
           <img src={cooler} className={classes.boxesIcon} alt="cooler"></img>Hűtés
         </div>
       </section>
