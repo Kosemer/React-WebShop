@@ -31,9 +31,9 @@ function ProductItem(props) {
       memory: props.memory,
       connectivity: props.connectivity,
     };
-  
+
     cartCtx.addItem(newItem);
-  
+
     // kosár mentése az adatbázisba
     /*fetch("https://webshopproducts-c1673-default-rtdb.firebaseio.com/cart.json", {
       method: "POST",
@@ -55,7 +55,6 @@ function ProductItem(props) {
         console.error(error);
       });*/
   };
-  
 
   return (
     <li className={classes.product}>
@@ -75,7 +74,9 @@ function ProductItem(props) {
       </div>
       <div className={classes.priceButton}>
         <div className={classes.price}>{price}</div>
-        <button className={classes.addToCartButton} onClick={addToCartHandler}>Kosárba teszem</button>
+        <button className={classes.addToCartButton} onClick={addToCartHandler}>
+          Kosárba teszem
+        </button>
       </div>
       {/*<div>
         <ProductItemForm onAddToCart={addToCartHandler}></ProductItemForm>
