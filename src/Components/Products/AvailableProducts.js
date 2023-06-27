@@ -13,7 +13,7 @@ const AvailableProducts = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [noResults, setNoResults] = useState(false);
-  const [parentId2, setParentId] = useState("")
+  const [parentId, setParentId] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -42,8 +42,7 @@ const AvailableProducts = (props) => {
     fetchProducts();
   }, [url]);
 
-  console.log(parentId2)
-
+  console.log("AvailableProducts:", parentId);
 
   const productsList = products
     .filter((item) =>
@@ -80,9 +79,9 @@ const AvailableProducts = (props) => {
   };
 
   useEffect(() => {
-    setNoResults(productsList.length === 0 && !loadingSpinner)
+    setNoResults(productsList.length === 0 && !loadingSpinner);
 
-   /* if (productsList.length === 0 && !loadingSpinner) {
+    /* if (productsList.length === 0 && !loadingSpinner) {
       setNoResults(true);
     } else {
       setNoResults(false);
@@ -127,15 +126,15 @@ const AvailableProducts = (props) => {
                 </select>
               </div>
               <div className={classes.productCount}>
-              Összesen {productsList.length} termék.
-            </div>
+                Összesen {productsList.length} termék.
+              </div>
             </div>
 
             <ul className={classes.productsList}>{productsList}</ul>
           </Card>
         )}
 
-        <ProductDetail products={products} parentId={parentId2}></ProductDetail>
+        <ProductDetail products={products} parentId={parentId}></ProductDetail>
       </section>
     </div>
   );
