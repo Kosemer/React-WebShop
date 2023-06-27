@@ -139,6 +139,8 @@ function CartProvider(props) {
       items,
     });
   };
+
+  const [parentId, setParentId] = useState("");
   
 
   const cartContext = {
@@ -161,6 +163,8 @@ function CartProvider(props) {
     cssMobile: cssMobile,
     setCssMobile: setCssMobile,
     replaceCartItems: replaceCartItems,
+    parentId: parentId,
+    setParentId: setParentId,
   };
 
   return (

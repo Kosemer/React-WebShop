@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ProductDetailLayout from "../Components/UI/ProductDetailLayout";
 import Card from "../Components/UI/Card";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get } from "firebase/database";
+import CartContext from "../Store/cart-context";
 
 // Firebase konfiguráció
 const firebaseConfig = {
@@ -20,17 +21,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 function ProductDetail(props) {
+
+  const cartCtx = useContext(CartContext);
+
   const params = useParams();
   const [product, setProduct] = useState(null);
 
-  console.log("ProductDetail eleje: " + props.parentId);
 
   useEffect(() => {
     const fetchProduct = async () => {
       const database = getDatabase(app);
       const productRef = ref(
         database,
-        `products/${props.parentId}/${params.productId}`
+        `products/${cartCtx.parentId}/${params.productId}`
       );
       const snapshot = await get(productRef);
       const loadedProduct = snapshot.val();
@@ -48,13 +51,12 @@ function ProductDetail(props) {
       }
     };
     fetchProduct();
-  }, [props.parentId, params.productId]);
+  }, [cartCtx.parentId, params.productId]);
 
   if (!product) {
     return <div></div>;
   }
 
-  console.log("ProductDetail vége: " + props.parentId);
 
   return (
     <Card>

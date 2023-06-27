@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProductDetail from "../../Pages/ProductDetail";
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./AvailableProducts.module.css";
 import ProductItem from "./ProductItem/ProductItem";
+import CartContext from "../../Store/cart-context";
 
 const AvailableProducts = (props) => {
+
+  const cartCtx = useContext(CartContext);
+
   const { url } = props; // Az adott komponens (Pages) elküldi a saját url-jét.
   const [products, setProducts] = useState([]);
   const [loadingSpinner, setLoadingSpinner] = useState(false);
@@ -13,7 +17,6 @@ const AvailableProducts = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [noResults, setNoResults] = useState(false);
-  const [parentId, setParentId] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -36,13 +39,12 @@ const AvailableProducts = (props) => {
       }
       setProducts(loadedProducts);
       if (loadedProducts.length > 0) {
-        setParentId(loadedProducts[0].parentId);
+        cartCtx.setParentId(loadedProducts[0].parentId);
       }
     };
     fetchProducts();
   }, [url]);
 
-  console.log("AvailableProducts:", parentId);
 
   const productsList = products
     .filter((item) =>
@@ -134,7 +136,7 @@ const AvailableProducts = (props) => {
           </Card>
         )}
 
-        <ProductDetail products={products} parentId={parentId}></ProductDetail>
+        <ProductDetail products={products}></ProductDetail>
       </section>
     </div>
   );

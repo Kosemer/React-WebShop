@@ -1,5 +1,5 @@
-import { useState } from "react";
-import {  Route, Routes } from "react-router-dom";
+import { useState, useContext } from "react";
+import {  Route, Routes, useMatch  } from "react-router-dom";
 import Cart from "./Components/Cart/Cart";
 import Header from "./Components/Layout/Header";
 import Memoriak from "./Pages/Memoriak";
@@ -16,8 +16,13 @@ import LoginForm from "./Pages/LoginForm";
 import SearchBar from "./Components/Layout/SearchBar";
 import Home from "./Pages/Home";
 import Slider from "./Components/UI/Slider/Slider";
+import CartContext from "./Store/cart-context";
 
 function App() {
+
+  const cartCtx = useContext(CartContext);
+
+
   const [visibleCart, setVisibleCart] = useState(false);
 
   const showCartHandler = () => {
@@ -41,6 +46,12 @@ function App() {
     {path: "delivery-method", element: <DeliveryMethod></DeliveryMethod>},
     {path: "delivery-details", element: <DeliveryDetails></DeliveryDetails>},
   ])*/
+
+  // A useMatch hook segítségével lekérem az aktuális oldal elérési útját
+  const match = useMatch("/:page/:productId");
+
+  // Az aktuális oldal elérési útjából kiolvasom az oldal nevét
+  const currentPage = match?.params?.page || "Home";
 
   return (
     <CartProvider>
@@ -67,7 +78,7 @@ function App() {
         ></Route>
         <Route path="kosar" element={<Kosar></Kosar>}></Route>
         <Route
-          path="product-detail/:productId"
+          path={`/${currentPage}/:productId`}
           element={<ProductDetail></ProductDetail>}
         ></Route>
         <Route

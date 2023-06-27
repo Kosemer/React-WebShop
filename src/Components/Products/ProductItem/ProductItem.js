@@ -16,8 +16,9 @@ function ProductItem(props) {
   const navigate = useNavigate();
 
   const productNavigate = () => {
-    navigate(`/product-detail/${props.id}`);
+    navigate(`/${cartCtx.parentId}/${props.id}`);
   };
+
 
   const addToCartHandler = (amount) => {
     const newItem = {
