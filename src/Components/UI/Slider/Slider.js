@@ -1,69 +1,50 @@
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
-import "react-awesome-slider/dist/custom-animations/cube-animation.css";
-import teszt from "../../../Assets/ram.png";
+import classes from "./Slider.module.css";
+import "react-awesome-slider/dist/custom-animations/fold-out-animation.css";
+import withAutoplay from "react-awesome-slider/dist/autoplay";
+import image from "../../../Assets/cooler.png";
+import image2 from "../../../Assets/iphone14pro.jpg";
+import image3 from "../../../Assets/macBookPro.jpg";
 
-import {
-  Provider,
-  Link,
-  withNavigationContext,
-  withNavigationHandlers,
-} from "react-awesome-slider/dist/navigation";
+const Slider = () => {
+  const AutoplaySlider = withAutoplay(AwesomeSlider);
 
-// Wrapp the AwesomeSlider component with the navigationHandlers
-const NavigationSlider = withNavigationHandlers(AwesomeSlider);
-
-function Slider() {
-  return (
-    <NavigationSlider
-      className="awesome-slider"
-      media={[
-        {
-          slug: "page-one",
-          className: "page-one",
-          children: () => (
-            <div>
-              <p>Page One</p>
-              <img src={teszt} alt="video card" />
-            </div>
-          ),
-        },
-        {
-          slug: "page-two",
-          className: "page-two",
-          children: () => (
-            <div>
-              <p>Page One</p>
-              <img src={teszt} alt="video card" />
-            </div>
-          ),
-        },
-      ]}
-    />
+  const slider = (
+    <AutoplaySlider
+      bullets={false} // alsó kis körök elrejtése
+      play={true}
+      cancelOnInteraction={false} // should stop playing on user interaction
+      interval={5000}
+      animation="foldOutAnimation"
+      className={classes.awsBtn}
+    >
+      <div data-src={image} />
+      <div data-src={image2} />
+      <div data-src={image3} />
+    </AutoplaySlider>
   );
-}
 
-// Page header navigation
-const Header = () => {
-  return (
-    <Header>
-      <nav>
-        <Link href="page-one">Page One</Link>
-        <Link href="page-two">Page Two</Link>
-      </nav>
-    </Header>
+  const mobileSlider = (
+    <AutoplaySlider
+      bullets={false} // alsó kis körök elrejtése
+      play={true}
+      cancelOnInteraction={false} // should stop playing on user interaction
+      interval={5000}
+      animation="foldOutAnimation"
+      className={classes.awsBtn}
+    >
+      <div data-src={image} />
+      <div data-src={image2} />
+      <div data-src={image3} />
+    </AutoplaySlider>
   );
-};
-
-// Wrapp the aplication with the navigation Provider passing down the current page slug.
-const App = () => {
-  const slug = "[THE INITIAL RENDERED SLUG]";
 
   return (
-    <Provider slug={slug}>
-      <Header />
-      <NavigationSlider />
-    </Provider>
+    <>
+      <div className={classes.desktop}>{slider}</div>
+      <div className={classes.mobile}>{mobileSlider}</div>
+    </>
   );
 };
 

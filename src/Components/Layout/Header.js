@@ -29,6 +29,10 @@ function Header(props) {
     navigate("/login");
   };
 
+  const homeHandler = () => {
+    navigate("/");
+  };
+
   /*const cartHandler = () => {
     navigate("/kosar");
   };*/
@@ -38,14 +42,16 @@ function Header(props) {
       {
         cartCtx.isLoggedIn && (
           <header className={headerClasses}>
-            <div  className={classes.logoutIcon}>
-              <NavLink to="login" className={classes.navigate}>
-              <LogoutIcon></LogoutIcon>
-              </NavLink>
+            <div className={classes.logoutIcon}>
+              <div onClick={logoutHandler} className={classes.navigate}>
+                <LogoutIcon></LogoutIcon>
+              </div>
             </div>
             <nav>
               <ul onClick={moblieMenuChange}>
-                <h1>WebShop</h1>
+                <h1 className={classes.HomePageIcon} onClick={homeHandler}>
+                  WebShop
+                </h1>
                 <li>
                   <NavLink
                     className={(navData) =>
