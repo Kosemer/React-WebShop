@@ -89,7 +89,7 @@ function DeliveryDetails() {
               defaultChecked={true}
               onClick={deliveryDetailsShowHandler}
             ></input>
-            <p>A szállítási és a számlázási adatok megegyeznek.</p>
+            <p className={classes.deliveryCheckbox}>A szállítási és a számlázási adatok megegyeznek.</p>
             {deliveryDetailsShow && (
               <Fragment>
                 <h2 className={classes.titleBox}>Szállítási adatok</h2>

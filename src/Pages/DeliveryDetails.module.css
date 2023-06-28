@@ -58,7 +58,7 @@
     margin-bottom: 1rem;
   }
 
-  p, input[type="checkbox"] {
+  .deliveryCheckbox, input[type="checkbox"] {
     display: inline;
     margin-right: 1rem;
   }

@@ -15,6 +15,11 @@ import ram from "../Assets/ram.png";
 import cooler from "../Assets/cooler.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import Slider from "../Components/UI/Slider/Slider";
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, get } from "firebase/database";
+import { useState, useEffect, useContext } from "react";
+import ProductItem from "../Components/Products/ProductItem/ProductItem";
+import ProductBox from "../Components/Products/ProductItem/ProductBox";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -22,6 +27,42 @@ const Home = () => {
   const navigateClick = (page) => {
     navigate(`/${page}`);
   };
+
+  const [popularProducts, setPopularProducts] = useState([]);
+
+  
+    // Firebase konfiguráció inicializálása
+    const firebaseConfig = {
+      apiKey: "AIzaSyA9I3pmY-2rE2GekX7A3angjr9GI8Gc-3U",
+      authDomain: "webshopproducts-c1673.firebaseapp.com",
+      databaseURL: "https://webshopproducts-c1673-default-rtdb.firebaseio.com",
+      projectId: "webshopproducts-c1673",
+      storageBucket: "webshopproducts-c1673.appspot.com",
+      messagingSenderId: "299385041421",
+      appId: "1:299385041421:web:f8fbc0b3be8c0d016a1b44",
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    useEffect(() => {
+      const fetchProduct = async () => {
+        const database = getDatabase(app);
+        const productRef = ref(database, `PopularProducts/`);
+        const snapshot = await get(productRef);
+        const loadedProducts = snapshot.val();
+        if (loadedProducts) {
+          const productsArray = Object.entries(loadedProducts).map(([key, value]) => ({
+            id: key,
+            ...value,
+          }));
+          setPopularProducts(productsArray);
+        }
+      };
+      fetchProduct();
+    }, []);
+    
+
+  console.log(popularProducts)
 
   return (
     <div>
@@ -71,149 +112,17 @@ const Home = () => {
         </section>
         <h2 className={classes.title}>Népszerü termékek</h2>
         <section className={classes.popularProducts}>
-          <div className={classes.product}>
-            <div className={classes.imageBox}>
-              <img src={geforce3070} className={classes.productImage}></img>
-            </div>
-            <section className={classes.description}>
-              <p className={classes.productTitle}>
-                ASUS TUF Gaming GeForce® RTX™ 3060 Ti videokártya, OC V2, 8 GB
-                GDDR6, 256 bites
-              </p>
-
-              <p className={classes.price}>323 437 Ft</p>
-              <button>Kosárba</button>
-            </section>
-          </div>
-          <div className={classes.product}>
-            <div className={classes.imageBox}>
-              <img src={sapphireRadeon} className={classes.productImage}></img>
-            </div>
-            <section className={classes.description}>
-              <p className={classes.productTitle}>
-                ASUS TUF Gaming GeForce® RTX™ 3060 Ti videokártya, OC V2, 8 GB
-                GDDR6, 256 bites
-              </p>
-
-              <p className={classes.price}>323 437 Ft</p>
-              <button>Kosárba</button>
-            </section>
-          </div>
-          <div className={classes.product}>
-            <div className={classes.imageBox}>
-              <img src={zotac} className={classes.productImage}></img>
-            </div>
-            <section className={classes.description}>
-              <p className={classes.productTitle}>
-                ASUS TUF Gaming GeForce® RTX™ 3060 Ti videokártya, OC V2, 8 GB
-                GDDR6, 256 bites
-              </p>
-
-              <p className={classes.price}>323 437 Ft</p>
-              <button>Kosárba</button>
-            </section>
-          </div>
-          <div className={classes.product}>
-            <div className={classes.imageBox}>
-              <img src={msi} className={classes.productImage}></img>
-            </div>
-            <section className={classes.description}>
-              <p className={classes.productTitle}>
-                ASUS TUF Gaming GeForce® RTX™ 3060 Ti videokártya, OC V2, 8 GB
-                GDDR6, 256 bites
-              </p>
-
-              <p className={classes.price}>323 437 Ft</p>
-              <button>Kosárba</button>
-            </section>
-          </div>
-          <div className={classes.product}>
-            <div className={classes.imageBox}>
-              <img src={geforce3070} className={classes.productImage}></img>
-            </div>
-            <section className={classes.description}>
-              <p className={classes.productTitle}>
-                ASUS TUF Gaming GeForce® RTX™ 3060 Ti videokártya, OC V2, 8 GB
-                GDDR6, 256 bites
-              </p>
-
-              <p className={classes.price}>323 437 Ft</p>
-              <button>Kosárba</button>
-            </section>
-          </div>
-          <div className={classes.product}>
-            <div className={classes.imageBox}>
-              <img src={zotac} className={classes.productImage}></img>
-            </div>
-            <section className={classes.description}>
-              <p className={classes.productTitle}>
-                ASUS TUF Gaming GeForce® RTX™ 3060 Ti videokártya, OC V2, 8 GB
-                GDDR6, 256 bites
-              </p>
-
-              <p className={classes.price}>323 437 Ft</p>
-              <button>Kosárba</button>
-            </section>
-          </div>
-        </section>
-        <h2 className={classes.title}>Új és akciós termékek</h2>
-        <section className={classes.popularProducts}>
-          <div className={classes.product}>
-            <div className={classes.imageBox}>
-              <img src={msi} className={classes.productImage}></img>
-            </div>
-            <section className={classes.description}>
-              <p className={classes.productTitle}>
-                ASUS TUF Gaming GeForce® RTX™ 3060 Ti videokártya, OC V2, 8 GB
-                GDDR6, 256 bites
-              </p>
-
-              <p className={classes.price}>323 437 Ft</p>
-              <button>Kosárba</button>
-            </section>
-          </div>
-          <div className={classes.product}>
-            <div className={classes.imageBox}>
-              <img src={msi} className={classes.productImage}></img>
-            </div>
-            <section className={classes.description}>
-              <p className={classes.productTitle}>
-                ASUS TUF Gaming GeForce® RTX™ 3060 Ti videokártya, OC V2, 8 GB
-                GDDR6, 256 bites
-              </p>
-
-              <p className={classes.price}>323 437 Ft</p>
-              <button>Kosárba</button>
-            </section>
-          </div>
-          <div className={classes.product}>
-            <div className={classes.imageBox}>
-              <img src={msi} className={classes.productImage}></img>
-            </div>
-            <section className={classes.description}>
-              <p className={classes.productTitle}>
-                ASUS TUF Gaming GeForce® RTX™ 3060 Ti videokártya, OC V2, 8 GB
-                GDDR6, 256 bites
-              </p>
-
-              <p className={classes.price}>323 437 Ft</p>
-              <button>Kosárba</button>
-            </section>
-          </div>
-          <div className={classes.product}>
-            <div className={classes.imageBox}>
-              <img src={msi} className={classes.productImage}></img>
-            </div>
-            <section className={classes.description}>
-              <p className={classes.productTitle}>
-                ASUS TUF Gaming GeForce® RTX™ 3060 Ti videokártya, OC V2, 8 GB
-                GDDR6, 256 bites
-              </p>
-
-              <p className={classes.price}>323 437 Ft</p>
-              <button>Kosárba</button>
-            </section>
-          </div>
+        {popularProducts.map((product) => (
+    <ProductBox
+      key={product.id}
+      id={product.id}
+      name={product.name}
+      price={product.price}
+      image={product.image}
+      parentId={product.parentId}
+    />
+  ))}
+          
         </section>
         <h2 className={classes.title}>Újdonságok</h2>
         <section className={classes.whatsNew}>
