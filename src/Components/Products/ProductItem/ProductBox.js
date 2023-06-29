@@ -12,8 +12,10 @@ const ProductBox = (props) => {
   const navigate = useNavigate();
 
   const productNavigate = () => {
+    cartCtx.setParentId(parentId);
     navigate(`/${parentId}/${id}`);
   };
+
 
   const priceFomat = props.price.toLocaleString("hu-HU", {
     style: "currency",

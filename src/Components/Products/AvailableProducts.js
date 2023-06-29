@@ -5,6 +5,7 @@ import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./AvailableProducts.module.css";
 import ProductItem from "./ProductItem/ProductItem";
 import CartContext from "../../Store/cart-context";
+import ProductBox from "./ProductItem/ProductBox";
 
 const AvailableProducts = (props) => {
 
@@ -44,6 +45,7 @@ const AvailableProducts = (props) => {
     };
     fetchProducts();
   }, [url]);
+  
 
 
   const productsList = products
@@ -60,7 +62,7 @@ const AvailableProducts = (props) => {
       }
     })
     .map((item) => (
-      <ProductItem
+      <ProductBox
         id={item.id}
         key={item.id}
         parentId={item.parentId}
@@ -69,7 +71,7 @@ const AvailableProducts = (props) => {
         price={item.price}
         image={item.image}
         processor={item.processor}
-      ></ProductItem>
+      ></ProductBox>
     ));
 
   const handleSearchInputChange = (event) => {

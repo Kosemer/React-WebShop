@@ -1,8 +1,14 @@
 import Products from "../Components/Products/Products";
 import classes from "./CategoryDescription.module.css";
 import Card from "../Components/UI/Card";
+import { useEffect } from "react";
 
 function Alaplapok() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const url =
     "https://webshopproducts-c1673-default-rtdb.firebaseio.com/products/alaplapok.json";
   const title = "Alaplapok";

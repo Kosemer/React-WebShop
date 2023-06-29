@@ -17,8 +17,11 @@ import SearchBar from "./Components/Layout/SearchBar";
 import Home from "./Pages/Home";
 import Slider from "./Components/UI/Slider/Slider";
 import CartContext from "./Store/cart-context";
+import Footer from "./Components/Layout/Footer";
 
 function App() {
+
+  
 
   const cartCtx = useContext(CartContext);
 
@@ -91,6 +94,7 @@ function App() {
         ></Route>
   </Routes>
       <main></main>
+      <Footer></Footer>
     </CartProvider>
   );
 }

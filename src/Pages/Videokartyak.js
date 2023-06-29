@@ -1,8 +1,14 @@
 import Products from "../Components/Products/Products";
 import Card from "../Components/UI/Card";
 import classes from './CategoryDescription.module.css'
+import { useEffect } from "react";
 
 function Videokartyak() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   const url =
     "https://webshopproducts-c1673-default-rtdb.firebaseio.com/products/videokartyak.json";
   return (

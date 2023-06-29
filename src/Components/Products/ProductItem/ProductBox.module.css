@@ -9,6 +9,12 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     display: grid;
     grid-template-rows: auto 1fr auto;
+    transition: transform 0.3s ease;
+  }
+
+  .product:hover {
+    /* Megnövelt méretek */
+    transform: scale(1.03);
   }
   
   .imageBox {
@@ -27,12 +33,14 @@
   .description {
     width: 100%;
     margin: 0 auto;
+    padding: 0px 10px 0px 10px;
+    text-align: center;
   }
   
   .productTitle {
     font-size: 1rem;
     font-weight: 600;
-    width: 90%;
+    width: 100%;
     cursor: pointer;
     color: #1d1b1b;
   }
@@ -51,6 +59,7 @@
     align-self: end;
     margin-top: 2rem;
     align-items: center;
+    text-align: center;
   }
 
   .button{
