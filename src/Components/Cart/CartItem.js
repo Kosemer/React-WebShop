@@ -11,9 +11,12 @@ const CartItem = (props) => {
         
         <div className={classes.summary}>
           <img alt='sa' src={props.image} className={classes.cartImage}></img>
-          <span className={classes.price}>{price}</span>
-          <span className={classes.amount}>x {props.amount}</span>
+
         </div>
+      </div>
+      <div className={classes.priceBox}>
+      <span className={classes.price}>{price}</span>
+          <span className={classes.amount}>x {props.amount}</span>
       </div>
       <div className={classes.actions}>
         <button onClick={props.onRemove}>−</button>

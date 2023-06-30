@@ -10,6 +10,8 @@ import RadioButton from "../Components/UI/RadioButton";
 function DeliveryMethod() {
   const cartCtx = useContext(CartContext);
 
+  cartCtx.setNextPage('/delivery-details')
+
   let nextPage = '/delivery-details';
 
   // ORDER STATUS BAR
@@ -89,7 +91,7 @@ function DeliveryMethod() {
           </Card>
         </section>
         <section className={classes.amount}>
-          <OrderSummary navigatePage={nextPage}></OrderSummary>
+          <OrderSummary nextPage={cartCtx.nextPage}></OrderSummary>
         </section>
       </section>
     </Fragment>

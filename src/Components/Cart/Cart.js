@@ -61,7 +61,7 @@ function Cart(props) {
     <Modal>
       {cartItems}
       <div className={classes.total}>
-        <p>Teljes összeg:</p>
+        <p className={classes.totalAmountTitle}>Teljes összeg:</p>
         <span className={classes.totalAmount}>{totalAmount}</span>
       </div>
 

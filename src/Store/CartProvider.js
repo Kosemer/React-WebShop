@@ -141,7 +141,7 @@ function CartProvider(props) {
   };
 
   const [parentId, setParentId] = useState("");
-  
+  const [nextPage, setNextPage] = useState("")
 
   const cartContext = {
     items: cartState.items,
@@ -165,6 +165,8 @@ function CartProvider(props) {
     replaceCartItems: replaceCartItems,
     parentId: parentId,
     setParentId: setParentId,
+    nextPage: nextPage,
+    setNextPage: setNextPage,
   };
 
   return (

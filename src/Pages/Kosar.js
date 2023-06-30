@@ -10,7 +10,7 @@ import StepProgressBar from "../Components/Order/StepProgressBar";
 function Kosar() {
   const cartCtx = useContext(CartContext);
 
-  let nextPage = '/delivery-method';
+  cartCtx.setNextPage('/delivery-method')
    
 
   // ORDER STATUS BAR
@@ -69,7 +69,7 @@ function Kosar() {
               <Card>{cartItems}</Card>
             </section>
             <section className={classes.amount}>
-              <OrderSummary nextPage={nextPage}></OrderSummary>
+              <OrderSummary nextPage={cartCtx.nextPage}></OrderSummary>
             </section>
           </section>
         </div>

@@ -201,6 +201,10 @@
     margin-right: 3px; /* térköz a szöveg és a kép között */
     float: left;
   }
+  .whatsNew {
+    width: 100%;
+    text-align: center;
+  }
 
   /* PRODUCTS */
 

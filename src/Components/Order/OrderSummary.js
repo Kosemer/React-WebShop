@@ -10,7 +10,7 @@ function OrderSummary(props) {
   const navigate = useNavigate();
 
   const NavigateCheckout = () => {
-    navigate(props.nextPage);
+    navigate(cartCtx.nextPage);
   };
 
   // TOTALAMOUNT FORMÁZÁSA
