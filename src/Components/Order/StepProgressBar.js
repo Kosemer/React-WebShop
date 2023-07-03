@@ -26,7 +26,7 @@ const { cart, order, data, confirmation } = cartCtx.orderStatus;
             </li>
             <li className={`step-wizard-item ${confirmation ? 'current-item' : ''}`}>
                 <span className="progress-count">4</span>
-                <span className="progress-label">Visszaigazolás</span>
+                <span className="progress-label">Rendelés</span>
             </li>
         </ul>
     </section>

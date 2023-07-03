@@ -39,11 +39,11 @@ const ProductBox = (props) => {
   };
 
   return (
-    <div className={classes.product} onClick={productNavigate}>
-      <div className={classes.imageBox}>
+    <div className={classes.product}>
+      <div className={classes.imageBox} onClick={productNavigate}>
         <img src={image} className={classes.productImage} alt={name}></img>
       </div>
-      <section className={classes.description}>
+      <section className={classes.description} onClick={productNavigate}>
         <p className={classes.productTitle}>{name}</p>
       </section>
       <div className={classes.priceAndButton}>

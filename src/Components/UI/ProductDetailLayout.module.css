@@ -93,10 +93,10 @@
 }
 
 .personalReceipt img {
-    display: block;
-    float: left;
-    margin-right: 10px;
-    cursor: default;
+  display: block;
+  float: left;
+  margin-right: 10px;
+  cursor: default;
 }
 
 /*PRODUCT AND PRICE*/
@@ -120,3 +120,57 @@
 }
 
 /*DESCRIPTION CONTAINER*/
+
+@media (max-width: 768px) {
+  .product {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    margin: 2rem auto;
+    animation: products-appear 1s ease-out forwards;
+  }
+  .productTitle {
+    max-width: 100%;
+  }
+  .product img {
+    max-width: 100%;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+  .container {
+    max-width: 100%;
+  }
+  .name {
+    text-align: center;
+  }
+  .descriptionContainer {
+    margin: 0.5rem;
+    text-align: center;
+  }
+
+  .description {
+    font-style: italic;
+    padding-bottom: 1rem;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+  }
+  .price {
+    text-align: center;
+  }
+  .inStock{
+    text-align: center;
+  }
+  .delivery{
+    display: block;
+  }
+  .deliveryTo{
+    margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1rem 0rem 0rem;
+  }
+  .deliveryText{
+    font-size: 15px;
+  }
+}

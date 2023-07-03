@@ -127,7 +127,7 @@ function DeliveryDetails() {
               </Fragment>
             )}
             <h2 className={classes.titleBox}>Megjegyzés</h2>
-            <div className={classes.fields}>
+            <div className={classes.fieldsComment}>
               <label for="comment">
                 Ha bármilyen további információt szeretne közölni, akkor
                 használja az alábbi mezőt:

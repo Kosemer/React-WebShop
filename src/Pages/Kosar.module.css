@@ -38,9 +38,31 @@ p {
 
 @media (max-width: 768px) {
   .progressBar{
-    max-width: 20rem;
-    width: 100%;
+    max-width: 100%;
+    width: 90%;
     margin: 2rem auto;
     list-style: none;
+  }
+  .products {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    margin: 2rem auto;
+    animation: products-appear 1s ease-out forwards;
+  }
+  .amount {
+    max-width: 22rem;
+    width: 100%;
+    margin: 2rem auto;
+    margin-top: 2rem; /* Hozzáadott tulajdonság */
+  }
+  .items {
+    max-width: 100%;
+    width: 90%;
+    margin: 2rem auto;
+    list-style: none;
+  }
+  ul {
+    padding-inline-start: 0px;
   }
 }

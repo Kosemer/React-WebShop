@@ -28,7 +28,8 @@
 
   .titleBox{
     background-color: #c5ddf5;
-    padding: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
   }
 
   .fields {
@@ -59,6 +60,55 @@
   }
 
   .deliveryCheckbox, input[type="checkbox"] {
+    color: black;
     display: inline;
     margin-right: 1rem;
+  }
+
+  .fieldsComment{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    .progressBar{
+      max-width: 100%;
+      width: 90%;
+      margin: 2rem auto;
+      list-style: none;
+    }
+    .products {
+      display: block;
+      max-width: 100%;
+      width: 100%;
+      margin: 2rem auto;
+      animation: products-appear 1s ease-out forwards;
+    }
+    .amount {
+      max-width: 22rem;
+      width: 100%;
+      margin: 2rem auto;
+      margin-top: 2rem; /* Hozzáadott tulajdonság */
+    }
+    .items {
+      max-width: 100%;
+      width: 90%;
+      margin: 2rem auto;
+      list-style: none;
+    }
+    ul {
+      padding-inline-start: 0px;
+    }
+    .fields{
+      display: block;
+    }
+    .inputBox{
+      width: calc(100% - 20px);
+    }
+    .fieldsComment{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
   }
