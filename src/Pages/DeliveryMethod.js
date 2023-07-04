@@ -1,5 +1,5 @@
 import classes from "./DeliveryMethod.module.css";
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useEffect } from "react";
 import Card from "../Components/UI/Card";
 import OrderSummary from "../Components/Order/OrderSummary";
 import StepProgressBar from "../Components/Order/StepProgressBar";
@@ -8,6 +8,12 @@ import onlinePay from "../Assets/onlinePay.jpg";
 import RadioButton from "../Components/UI/RadioButton";
 
 function DeliveryMethod() {
+  
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const cartCtx = useContext(CartContext);
 
   cartCtx.setNextPage('/delivery-details')

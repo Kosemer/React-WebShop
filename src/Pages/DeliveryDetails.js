@@ -1,11 +1,17 @@
 import classes from "./DeliveryDetails.module.css";
 import StepProgressBar from "../Components/Order/StepProgressBar";
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext, useState, useRef, useEffect } from "react";
 import Card from "../Components/UI/Card";
 import OrderSummary from "../Components/Order/OrderSummary";
 import CartContext from "../Store/cart-context";
 
 function DeliveryDetails() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+
   const cartCtx = useContext(CartContext);
 
   // A számlázási és szállítási adatok megegyeznek.
@@ -20,6 +26,7 @@ function DeliveryDetails() {
   cartCtx.orderStatus.order = false;
   cartCtx.orderStatus.data = true;
   cartCtx.orderStatus.confirmation = false;
+  
 
   return (
     <Fragment>

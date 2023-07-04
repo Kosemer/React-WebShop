@@ -99,7 +99,7 @@
   @media (max-width: 768px) {
     .container{
       width: 100%;
-      padding: 0rem 1rem;
+      padding: 0rem 0rem;
     }
     .amount {
       max-width: 22rem;
@@ -107,3 +107,16 @@
       margin: 2rem auto;
     }
   }
+
+  /* Töréspont 3 - Mobil méretek */
+@media (max-width: 480px) {
+  .container{
+    width: 100%;
+    padding: 0rem 0rem;
+  }
+  .amount {
+    max-width: 22rem;
+    width: 60%;
+    margin: 2rem auto;
+  }
+}

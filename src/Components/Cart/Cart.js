@@ -70,9 +70,9 @@ function Cart(props) {
           className={classes["button--alt"]}
           onClick={props.hideCartHandler}
         >
-          Close
+          Bezár
         </button>
-        {hasItems && <button className={classes.button} onClick={navigateCart}>Order</button>}
+        {hasItems && <button className={classes.button} onClick={navigateCart}>Rendelés</button>}
       </div>
     </Modal>
   );
