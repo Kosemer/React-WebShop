@@ -1,7 +1,8 @@
-import { useReducer, useState } from "react";
+import { useReducer, useState, useEffect } from "react";
 import CartContext from "./cart-context";
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cartItems"));
+const defaultShippingCost = 1699;
 const defaultCartState = {
   // A localStorage- ből olvasom ki az adatokat, ha van.
   items: cartFromLocalStorage ? cartFromLocalStorage.items : [],
@@ -116,13 +117,24 @@ const cartReducer = (state, action) => {
 };
 
 function CartProvider(props) {
+  const cartFromLocalStorage = JSON.parse(localStorage.getItem("cartItems"));
   const [cartState, dispatchCartAction] = useReducer(
     cartReducer,
-    defaultCartState
+    cartFromLocalStorage || defaultCartState
   );
 
   const [cssMobile, setCssMobile] = useState(true);
   
+  useEffect(() => {
+    // Beolvassa a shippingCost értékét a localStorage-ból
+    const shippingCostFromLocalStorage = localStorage.getItem("shippingCost");
+    if (shippingCostFromLocalStorage) {
+      dispatchCartAction({
+        type: "SET_SHIPPING_COST",
+        shippingCost: shippingCostFromLocalStorage,
+      });
+    }
+  }, []);
 
   const addItemToCartHandler = (item) => {
     dispatchCartAction({ type: "ADD", item: item });

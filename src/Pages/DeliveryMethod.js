@@ -8,12 +8,6 @@ import onlinePay from "../Assets/onlinePay.jpg";
 import RadioButton from "../Components/UI/RadioButton";
 
 function DeliveryMethod() {
-  
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const cartCtx = useContext(CartContext);
 
   cartCtx.setNextPage('/delivery-details')

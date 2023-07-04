@@ -64,7 +64,7 @@ function DeliveryDetails() {
                   type="text"
                   id="postalCode"
                   name="postalCode"
-                  minlength="4"
+                  minLength="4"
                   size="30"
                   className={classes.shortField}
                 ></input>

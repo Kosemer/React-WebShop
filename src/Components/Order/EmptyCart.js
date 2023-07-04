@@ -9,7 +9,7 @@ function EmptyCart() {
       <Card>
         <div className={classes.emptyText}>
           <h1>A kosarad üres</h1>
-          <p>
+          <p className={classes.text}>
             Térj vissza a{" "}
             <Link to="/" className={classes.link}>
               főoldalra

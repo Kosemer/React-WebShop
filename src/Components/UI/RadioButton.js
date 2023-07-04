@@ -17,6 +17,7 @@ function RadioButton(props) {
 
     //A radioRef.current.click() meghívja a click eseményt a radio gombon, ami egyenlő azzal ha kézzel rákattintanának a radio gombra.
   };
+  
 
   return (
     <div className={classes.radioConatiner} onClick={handleContainerClick}>
