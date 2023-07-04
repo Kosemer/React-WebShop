@@ -4,6 +4,8 @@
   align-items: center;
   border-bottom: 2px solid #8a2b06;
   margin: 1rem 0;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 
 .cart-item h2 {
@@ -75,13 +77,8 @@
   color: white;
 }
 
-@media (min-width: 768px) {
-  .actions {
-    flex-direction: row;
-  }
-}
-
-@media (max-width: 768px) {
+/* Töréspont 3 - Mobil méretek */
+@media (max-width: 480px) {
   .cart-item {
     display: flex;
     flex-direction: column;
@@ -136,4 +133,15 @@
     display: flex;
     margin-left: 0px;
   }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .actions {
+    display: flex;
+    flex-direction:row;
+  }
+  .actions button:first-child {
+    margin-right: 2rem;
+  }
+  
 }
