@@ -26,6 +26,10 @@
   width: 100%;
 }
 
+.errorMessage{
+  color: red;
+}
+
 .items {
   max-width: 110rem;
   width: 70%;

@@ -1,5 +1,5 @@
 import classes from "./DeliveryMethod.module.css";
-import { Fragment, useContext, useEffect } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import Card from "../Components/UI/Card";
 import OrderSummary from "../Components/Order/OrderSummary";
 import StepProgressBar from "../Components/Order/StepProgressBar";
@@ -10,9 +10,38 @@ import RadioButton from "../Components/UI/RadioButton";
 function DeliveryMethod() {
   const cartCtx = useContext(CartContext);
 
+  const [selectedShippingMethod, setSelectedShippingMethod] = useState("");
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [showPaymentErrorMessage, setShowPaymentErrorMessage] = useState(false);
+
+  const handleShippingMethodChange = (event) => {
+    setSelectedShippingMethod(event.target.value);
+  };
+
+  const handlePaymentMethodChange = (event) => {
+    setSelectedPaymentMethod(event.target.value);
+  };
+
+  const handleButtonClick = () => {
+    if (!selectedShippingMethod) {
+      setShowErrorMessage(true);
+      return;
+    }
+
+    if (!selectedPaymentMethod) {
+      setShowErrorMessage(false);
+      setShowPaymentErrorMessage(true);
+      return;
+    }
+
+    setShowErrorMessage(false);
+    setShowPaymentErrorMessage(false);
+  };
+
   cartCtx.setNextPage('/delivery-details')
 
-  let nextPage = '/delivery-details';
+  let nextPage = "/delivery-details";
 
   // ORDER STATUS BAR
   cartCtx.orderStatus.cart = false;
@@ -29,7 +58,6 @@ function DeliveryMethod() {
     shippingCost = `${cartCtx.shippingCost} Ft`;
   }
 
-
   return (
     <Fragment>
       <div className={classes.progressBar}>
@@ -39,31 +67,50 @@ function DeliveryMethod() {
         <section className={classes.items}>
           <Card>
             <h2 className={classes.titleBox}>Szállítási mód választás</h2>
-
-              <RadioButton name="shippingMethod" value="homeDelivery" id="homeDelivery">
-                <div className={classes.detailsChoose}>
-                  <h1>Házhozszállítás GLS futárral</h1>
-                  <p className={classes.pTag}>
-                    Házhozszállítás GLS futárral Magyarország egész területén.
-                  </p>
-                  <p className={classes.shippingCost}>{shippingCost}</p>
-                </div>
-              </RadioButton>
-              <hr className={classes.line}></hr>
-              <RadioButton name="shippingMethod" value="pickup" id="pickup">
-                <div className={classes.detailsChoose}>
-                  <h1>Személyes átvétel</h1>
-                  <p className={classes.pTag}v>
-                    Személyes átvételre az alábbi üzletünkben van lehetőséged:
-                  </p>
-                  <p className={classes.pTag}>III. ker., Ittátveheted út 85.</p>
-                  <p className={classes.pTag}>Nyitvatartás: H-P 10-18</p>
-                </div>
-              </RadioButton>
-              <hr className={classes.line}></hr>
+<button onClick={handleButtonClick}>jksdfnknsdfknsdj</button>
+            <RadioButton
+              name="shippingMethod"
+              value="homeDelivery"
+              id="homeDelivery"
+              onChange={handleShippingMethodChange}
+              checked={selectedShippingMethod === "homeDelivery"}
+            >
+              <div className={classes.detailsChoose}>
+                <h1>Házhozszállítás GLS futárral</h1>
+                <p className={classes.pTag}>
+                  Házhozszállítás GLS futárral Magyarország egész területén.
+                </p>
+                <p className={classes.shippingCost}>{shippingCost}</p>
+              </div>
+            </RadioButton>
+            {showErrorMessage && (
+              <p className={classes.errorMessage}>Nincs szállítási mód kiválasztva</p>
+            )}
+            <hr className={classes.line}></hr>
+            <RadioButton
+              name="shippingMethod"
+              value="pickup"
+              id="pickup"
+              onChange={handleShippingMethodChange}
+              checked={selectedShippingMethod === "pickup"}
+            >
+              <div className={classes.detailsChoose}>
+                <h1>Személyes átvétel</h1>
+                <p className={classes.pTag} v>
+                  Személyes átvételre az alábbi üzletünkben van lehetőséged:
+                </p>
+                <p className={classes.pTag}>III. ker., Ittátveheted út 85.</p>
+                <p className={classes.pTag}>Nyitvatartás: H-P 10-18</p>
+              </div>
+            </RadioButton>
+            <hr className={classes.line}></hr>
 
             <h2 className={classes.titleBox}>Fizetési mód</h2>
-            <RadioButton name="paymentMethod" value="creditCard" id="creditCard">
+            <RadioButton
+              name="paymentMethod"
+              value="creditCard"
+              id="creditCard"
+            >
               <div className={classes.detailsChoose}>
                 <h1>Internetes fizetés bankkártyával, hitelkártyával.</h1>
                 <img
@@ -77,21 +124,30 @@ function DeliveryMethod() {
             <RadioButton name="paymentMethod" value="locally" id="locally">
               <div className={classes.detailsChoose}>
                 <h1>Utánvét</h1>
-                <p className={classes.pTag}>Fizetés készpénzben vagy bankkártyával a futárnak a termék átvételekor.</p>
+                <p className={classes.pTag}>
+                  Fizetés készpénzben vagy bankkártyával a futárnak a termék
+                  átvételekor.
+                </p>
               </div>
             </RadioButton>
             <hr className={classes.line}></hr>
-            <RadioButton name="paymentMethod" value="transferInAdvance" id="transferInAdvance">
+            <RadioButton
+              name="paymentMethod"
+              value="transferInAdvance"
+              id="transferInAdvance"
+            >
               <div className={classes.detailsChoose}>
                 <h1>Előreutalás</h1>
-                <p className={classes.pTag}>A visszaigazoló e-mail fogja tartalmazni a tudnivalókat.</p>
+                <p className={classes.pTag}>
+                  A visszaigazoló e-mail fogja tartalmazni a tudnivalókat.
+                </p>
               </div>
             </RadioButton>
             <hr className={classes.line}></hr>
           </Card>
         </section>
         <section className={classes.amount}>
-          <OrderSummary nextPage={cartCtx.nextPage}></OrderSummary>
+          <OrderSummary handleButtonClick={handleButtonClick}></OrderSummary>
         </section>
       </section>
     </Fragment>

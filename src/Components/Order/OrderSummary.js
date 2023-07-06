@@ -11,6 +11,8 @@ function OrderSummary(props) {
 
   const NavigateCheckout = () => {
     navigate(cartCtx.nextPage);
+    //props.handleButtonClick()
+    props.handleContinueClick();
   };
 
   // TOTALAMOUNT FORMÁZÁSA
