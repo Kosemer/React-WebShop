@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import {  Route, Routes, useMatch  } from "react-router-dom";
+import { Route, Routes, useMatch } from "react-router-dom";
 import Cart from "./Components/Cart/Cart";
 import Header from "./Components/Layout/Header";
 import Memoriak from "./Pages/Memoriak";
@@ -18,13 +18,10 @@ import Home from "./Pages/Home";
 import Slider from "./Components/UI/Slider/Slider";
 import CartContext from "./Store/cart-context";
 import Footer from "./Components/Layout/Footer";
+import Order from "./Pages/Order";
 
 function App() {
-
-  
-
   const cartCtx = useContext(CartContext);
-
 
   const [visibleCart, setVisibleCart] = useState(false);
 
@@ -36,7 +33,7 @@ function App() {
     setVisibleCart(false);
   };
 
- /* const router = createBrowserRouter([
+  /* const router = createBrowserRouter([
     {path: "/", element: <Alaplapok></Alaplapok>},  // Itt lesz a HOME
     {path: "login", element: <LoginForm></LoginForm>},
     {path: "alaplapok", element: <Alaplapok></Alaplapok>},
@@ -92,7 +89,8 @@ function App() {
           path="delivery-details"
           element={<DeliveryDetails></DeliveryDetails>}
         ></Route>
-  </Routes>
+        <Route path="rendeles" element={<Order></Order>}></Route>
+      </Routes>
       <main></main>
       <Footer></Footer>
     </CartProvider>
