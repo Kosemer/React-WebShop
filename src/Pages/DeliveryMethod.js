@@ -10,6 +10,8 @@ import RadioButton from "../Components/UI/RadioButton";
 function DeliveryMethod() {
   const cartCtx = useContext(CartContext);
 
+  let nextPage = "/delivery-details";
+
   const [selectedShippingMethod, setSelectedShippingMethod] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const [showErrorMessage, setShowErrorMessage] = useState(false);
@@ -17,31 +19,34 @@ function DeliveryMethod() {
 
   const handleShippingMethodChange = (event) => {
     setSelectedShippingMethod(event.target.value);
+    setShowErrorMessage(false);
   };
 
   const handlePaymentMethodChange = (event) => {
     setSelectedPaymentMethod(event.target.value);
-  };
-
-  const handleButtonClick = () => {
-    if (!selectedShippingMethod) {
-      setShowErrorMessage(true);
-      return;
-    }
-
-    if (!selectedPaymentMethod) {
-      setShowErrorMessage(false);
-      setShowPaymentErrorMessage(true);
-      return;
-    }
-
-    setShowErrorMessage(false);
     setShowPaymentErrorMessage(false);
   };
 
-  cartCtx.setNextPage('/delivery-details')
+  const [clicked, setClicked] = useState(false);
 
-  let nextPage = "/delivery-details";
+  const handleButtonClick = () => {
+    setClicked(true);
+    cartCtx.setNextPage(nextPage);
+  };
+
+  useEffect(() => {
+    if (clicked) {
+      if (!selectedShippingMethod || !selectedPaymentMethod) {
+        setShowErrorMessage(!selectedShippingMethod);
+        setShowPaymentErrorMessage(!selectedPaymentMethod);
+        cartCtx.setNextPage(null);
+      } else {
+        setShowErrorMessage(false);
+        setShowPaymentErrorMessage(false);
+        cartCtx.setNextPage(nextPage);
+      }
+    }
+  }, [selectedShippingMethod, selectedPaymentMethod, clicked]);
 
   // ORDER STATUS BAR
   cartCtx.orderStatus.cart = false;
@@ -67,7 +72,7 @@ function DeliveryMethod() {
         <section className={classes.items}>
           <Card>
             <h2 className={classes.titleBox}>Szállítási mód választás</h2>
-<button onClick={handleButtonClick}>jksdfnknsdfknsdj</button>
+            <button onClick={handleButtonClick}>jksdfnknsdfknsdj</button>
             <RadioButton
               name="shippingMethod"
               value="homeDelivery"
@@ -83,9 +88,7 @@ function DeliveryMethod() {
                 <p className={classes.shippingCost}>{shippingCost}</p>
               </div>
             </RadioButton>
-            {showErrorMessage && (
-              <p className={classes.errorMessage}>Nincs szállítási mód kiválasztva</p>
-            )}
+
             <hr className={classes.line}></hr>
             <RadioButton
               name="shippingMethod"
@@ -103,6 +106,11 @@ function DeliveryMethod() {
                 <p className={classes.pTag}>Nyitvatartás: H-P 10-18</p>
               </div>
             </RadioButton>
+            {showErrorMessage && (
+              <p className={classes.errorMessage}>
+                Nincs szállítási mód kiválasztva!
+              </p>
+            )}
             <hr className={classes.line}></hr>
 
             <h2 className={classes.titleBox}>Fizetési mód</h2>
@@ -110,6 +118,8 @@ function DeliveryMethod() {
               name="paymentMethod"
               value="creditCard"
               id="creditCard"
+              onChange={handlePaymentMethodChange}
+              checked={selectedPaymentMethod === "creditCard"}
             >
               <div className={classes.detailsChoose}>
                 <h1>Internetes fizetés bankkártyával, hitelkártyával.</h1>
@@ -121,7 +131,13 @@ function DeliveryMethod() {
               </div>
             </RadioButton>
             <hr className={classes.line}></hr>
-            <RadioButton name="paymentMethod" value="locally" id="locally">
+            <RadioButton
+              name="paymentMethod"
+              value="locally"
+              id="locally"
+              onChange={handlePaymentMethodChange}
+              checked={selectedPaymentMethod === "locally"}
+            >
               <div className={classes.detailsChoose}>
                 <h1>Utánvét</h1>
                 <p className={classes.pTag}>
@@ -135,6 +151,8 @@ function DeliveryMethod() {
               name="paymentMethod"
               value="transferInAdvance"
               id="transferInAdvance"
+              onChange={handlePaymentMethodChange}
+              checked={selectedPaymentMethod === "transferInAdvance"}
             >
               <div className={classes.detailsChoose}>
                 <h1>Előreutalás</h1>
@@ -143,6 +161,11 @@ function DeliveryMethod() {
                 </p>
               </div>
             </RadioButton>
+            {showPaymentErrorMessage && (
+              <p className={classes.errorMessage}>
+                Nincs fizetési mód kiválasztva!
+              </p>
+            )}
             <hr className={classes.line}></hr>
           </Card>
         </section>

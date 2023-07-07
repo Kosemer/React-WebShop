@@ -27,14 +27,14 @@ function DeliveryDetails() {
   cartCtx.orderStatus.order = false;
   cartCtx.orderStatus.data = true;
   cartCtx.orderStatus.confirmation = false;
-  
 
   const [continueClicked, setContinueClicked] = useState(false);
-  
 
   const handleContinueClick = () => {
-    const isFormValid = Object.values(formValues).every(value => value !== "");
-    
+    const isFormValid = Object.values(formValues).every(
+      (value) => value !== ""
+    );
+
     if (isFormValid) {
       navigate("/rendeles");
     } else {
@@ -42,7 +42,7 @@ function DeliveryDetails() {
       window.scrollTo(0, 0);
     }
   };
-  
+
   const [formValues, setFormValues] = useState({
     email: "",
     phone: "",
@@ -60,6 +60,8 @@ function DeliveryDetails() {
       [name]: value,
     }));
   };
+
+  const shouldCallContinueClick = true;
 
   return (
     <Fragment>
@@ -81,7 +83,9 @@ function DeliveryDetails() {
                   onChange={handleInputChange}
                 ></input>
                 {continueClicked && formValues.email === "" && (
-                  <p className={classes.requiredField}>A mező kitöltése kötelező</p>
+                  <p className={classes.requiredField}>
+                    A mező kitöltése kötelező
+                  </p>
                 )}
               </div>
               <div className={classes.inputBox}>
@@ -95,7 +99,9 @@ function DeliveryDetails() {
                   className={classes.shortField}
                 ></input>
                 {continueClicked && formValues.phone === "" && (
-                  <p className={classes.requiredField}>A mező kitöltése kötelező</p>
+                  <p className={classes.requiredField}>
+                    A mező kitöltése kötelező
+                  </p>
                 )}
               </div>
             </div>
@@ -112,7 +118,9 @@ function DeliveryDetails() {
                   onChange={handleInputChange}
                 ></input>
                 {continueClicked && formValues.name === "" && (
-                  <p className={classes.requiredField}>A mező kitöltése kötelező!</p>
+                  <p className={classes.requiredField}>
+                    A mező kitöltése kötelező!
+                  </p>
                 )}
               </div>
               <div className={classes.inputBox}>
@@ -128,7 +136,9 @@ function DeliveryDetails() {
                   className={classes.shortField}
                 ></input>
                 {continueClicked && formValues.postalCode === "" && (
-                  <p className={classes.requiredField}>A mező kitöltése kötelező</p>
+                  <p className={classes.requiredField}>
+                    A mező kitöltése kötelező
+                  </p>
                 )}
               </div>
               <div className={classes.inputBox}>
@@ -141,7 +151,9 @@ function DeliveryDetails() {
                   onChange={handleInputChange}
                 ></input>
                 {continueClicked && formValues.city === "" && (
-                  <p className={classes.requiredField}>A mező kitöltése kötelező</p>
+                  <p className={classes.requiredField}>
+                    A mező kitöltése kötelező
+                  </p>
                 )}
               </div>
               <div className={classes.inputBox}>
@@ -154,7 +166,9 @@ function DeliveryDetails() {
                   onChange={handleInputChange}
                 ></input>
                 {continueClicked && formValues.street === "" && (
-                  <p className={classes.requiredField}>A mező kitöltése kötelező</p>
+                  <p className={classes.requiredField}>
+                    A mező kitöltése kötelező
+                  </p>
                 )}
               </div>
               <div className={classes.inputBox}>
@@ -168,7 +182,9 @@ function DeliveryDetails() {
                   onChange={handleInputChange}
                 ></input>
                 {continueClicked && formValues.floor === "" && (
-                  <p className={classes.requiredField}>A mező kitöltése kötelező</p>
+                  <p className={classes.requiredField}>
+                    A mező kitöltése kötelező
+                  </p>
                 )}
               </div>
               <div className={classes.inputBox}>
@@ -238,7 +254,9 @@ function DeliveryDetails() {
         </section>
         <section className={classes.amount}>
           <OrderSummary
-            handleContinueClick={handleContinueClick}
+            handleContinueClick={
+              shouldCallContinueClick ? handleContinueClick : null
+            }
           ></OrderSummary>
         </section>
       </section>
