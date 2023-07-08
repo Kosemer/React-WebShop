@@ -31,7 +31,7 @@ function DeliveryDetails() {
   const [continueClicked, setContinueClicked] = useState(false);
 
   const handleContinueClick = () => {
-    const isFormValid = Object.values(formValues).every(
+    const isFormValid = Object.values(cartCtx.formValues).every(
       (value) => value !== ""
     );
 
@@ -43,19 +43,9 @@ function DeliveryDetails() {
     }
   };
 
-  const [formValues, setFormValues] = useState({
-    email: "",
-    phone: "",
-    name: "",
-    postalCode: "",
-    city: "",
-    street: "",
-    floor: "",
-  });
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormValues((prevFormValues) => ({
+    cartCtx.setFormValues((prevFormValues) => ({
       ...prevFormValues,
       [name]: value,
     }));
@@ -79,10 +69,10 @@ function DeliveryDetails() {
                   type="email"
                   id="email"
                   name="email"
-                  value={formValues.email}
+                  value={cartCtx.formValues.email}
                   onChange={handleInputChange}
                 ></input>
-                {continueClicked && formValues.email === "" && (
+                {continueClicked && cartCtx.formValues.email === "" && (
                   <p className={classes.requiredField}>
                     A mező kitöltése kötelező
                   </p>
@@ -94,11 +84,11 @@ function DeliveryDetails() {
                   type="text"
                   id="phone"
                   name="phone"
-                  value={formValues.phone}
+                  value={cartCtx.formValues.phone}
                   onChange={handleInputChange}
                   className={classes.shortField}
                 ></input>
-                {continueClicked && formValues.phone === "" && (
+                {continueClicked && cartCtx.formValues.phone === "" && (
                   <p className={classes.requiredField}>
                     A mező kitöltése kötelező
                   </p>
@@ -114,10 +104,10 @@ function DeliveryDetails() {
                   id="name"
                   name="name"
                   size="60"
-                  value={formValues.name}
+                  value={cartCtx.formValues.name}
                   onChange={handleInputChange}
                 ></input>
-                {continueClicked && formValues.name === "" && (
+                {continueClicked && cartCtx.formValues.name === "" && (
                   <p className={classes.requiredField}>
                     A mező kitöltése kötelező!
                   </p>
@@ -131,11 +121,11 @@ function DeliveryDetails() {
                   name="postalCode"
                   minLength="4"
                   size="30"
-                  value={formValues.postalCode}
+                  value={cartCtx.formValues.postalCode}
                   onChange={handleInputChange}
                   className={classes.shortField}
                 ></input>
-                {continueClicked && formValues.postalCode === "" && (
+                {continueClicked && cartCtx.formValues.postalCode === "" && (
                   <p className={classes.requiredField}>
                     A mező kitöltése kötelező
                   </p>
@@ -147,10 +137,10 @@ function DeliveryDetails() {
                   type="text"
                   id="city"
                   name="city"
-                  value={formValues.city}
+                  value={cartCtx.formValues.city}
                   onChange={handleInputChange}
                 ></input>
-                {continueClicked && formValues.city === "" && (
+                {continueClicked && cartCtx.formValues.city === "" && (
                   <p className={classes.requiredField}>
                     A mező kitöltése kötelező
                   </p>
@@ -162,10 +152,10 @@ function DeliveryDetails() {
                   type="text"
                   id="street"
                   name="street"
-                  value={formValues.street}
+                  value={cartCtx.formValues.street}
                   onChange={handleInputChange}
                 ></input>
-                {continueClicked && formValues.street === "" && (
+                {continueClicked && cartCtx.formValues.street === "" && (
                   <p className={classes.requiredField}>
                     A mező kitöltése kötelező
                   </p>
@@ -178,10 +168,10 @@ function DeliveryDetails() {
                   id="floor"
                   name="floor"
                   className={classes.shortField}
-                  value={formValues.floor}
+                  value={cartCtx.formValues.floor}
                   onChange={handleInputChange}
                 ></input>
-                {continueClicked && formValues.floor === "" && (
+                {continueClicked && cartCtx.formValues.floor === "" && (
                   <p className={classes.requiredField}>
                     A mező kitöltése kötelező
                   </p>

@@ -12,19 +12,14 @@ function DeliveryMethod() {
 
   let nextPage = "/delivery-details";
 
-  const [selectedShippingMethod, setSelectedShippingMethod] = useState("");
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
-  const [showErrorMessage, setShowErrorMessage] = useState(false);
-  const [showPaymentErrorMessage, setShowPaymentErrorMessage] = useState(false);
-
   const handleShippingMethodChange = (event) => {
-    setSelectedShippingMethod(event.target.value);
-    setShowErrorMessage(false);
+    cartCtx.setSelectedShippingMethod(event.target.value);
+    cartCtx.setShowErrorMessage(false);
   };
 
   const handlePaymentMethodChange = (event) => {
-    setSelectedPaymentMethod(event.target.value);
-    setShowPaymentErrorMessage(false);
+    cartCtx.setSelectedPaymentMethod(event.target.value);
+    cartCtx.setShowPaymentErrorMessage(false);
   };
 
   const [clicked, setClicked] = useState(false);
@@ -32,27 +27,27 @@ function DeliveryMethod() {
   const handleButtonClick = () => {
     setClicked(true);
 
-    if (selectedShippingMethod && selectedPaymentMethod) {
+    if (cartCtx.selectedShippingMethod && cartCtx.selectedPaymentMethod) {
       cartCtx.setNextPage(nextPage);
     } else {
-      setShowErrorMessage(!selectedShippingMethod);
-      setShowPaymentErrorMessage(!selectedPaymentMethod);
+      cartCtx.setShowErrorMessage(!cartCtx.selectedShippingMethod);
+      cartCtx.setShowPaymentErrorMessage(!cartCtx.selectedPaymentMethod);
     }
   };
 
   useEffect(() => {
     if (clicked) {
-      if (!selectedShippingMethod || !selectedPaymentMethod) {
-        setShowErrorMessage(!selectedShippingMethod);
-        setShowPaymentErrorMessage(!selectedPaymentMethod);
+      if (!cartCtx.selectedShippingMethod || !cartCtx.selectedPaymentMethod) {
+        cartCtx.setShowErrorMessage(!cartCtx.selectedShippingMethod);
+        cartCtx.setShowPaymentErrorMessage(!cartCtx.selectedPaymentMethod);
         cartCtx.setNextPage(null);
       } else {
-        setShowErrorMessage(false);
-        setShowPaymentErrorMessage(false);
+        cartCtx.setShowErrorMessage(false);
+        cartCtx.setShowPaymentErrorMessage(false);
         cartCtx.setNextPage(nextPage);
       }
     }
-  }, [selectedShippingMethod, selectedPaymentMethod, clicked]);
+  }, [cartCtx.selectedShippingMethod, cartCtx.selectedPaymentMethod, clicked]);
 
   // ORDER STATUS BAR
   cartCtx.orderStatus.cart = false;
@@ -84,7 +79,7 @@ function DeliveryMethod() {
               value="homeDelivery"
               id="homeDelivery"
               onChange={handleShippingMethodChange}
-              checked={selectedShippingMethod === "homeDelivery"}
+              checked={cartCtx.selectedShippingMethod === "homeDelivery"}
             >
               <div className={classes.detailsChoose}>
                 <h1>Házhozszállítás GLS futárral</h1>
@@ -101,7 +96,7 @@ function DeliveryMethod() {
               value="pickup"
               id="pickup"
               onChange={handleShippingMethodChange}
-              checked={selectedShippingMethod === "pickup"}
+              checked={cartCtx.selectedShippingMethod === "pickup"}
             >
               <div className={classes.detailsChoose}>
                 <h1>Személyes átvétel</h1>
@@ -112,7 +107,7 @@ function DeliveryMethod() {
                 <p className={classes.pTag}>Nyitvatartás: H-P 10-18</p>
               </div>
             </RadioButton>
-            {showErrorMessage && (
+            {cartCtx.showErrorMessage && (
               <p className={classes.errorMessage}>
                 Nincs szállítási mód kiválasztva!
               </p>
@@ -125,7 +120,7 @@ function DeliveryMethod() {
               value="creditCard"
               id="creditCard"
               onChange={handlePaymentMethodChange}
-              checked={selectedPaymentMethod === "creditCard"}
+              checked={cartCtx.selectedPaymentMethod === "creditCard"}
             >
               <div className={classes.detailsChoose}>
                 <h1>Internetes fizetés bankkártyával, hitelkártyával.</h1>
@@ -142,7 +137,7 @@ function DeliveryMethod() {
               value="locally"
               id="locally"
               onChange={handlePaymentMethodChange}
-              checked={selectedPaymentMethod === "locally"}
+              checked={cartCtx.selectedPaymentMethod === "locally"}
             >
               <div className={classes.detailsChoose}>
                 <h1>Utánvét</h1>
@@ -158,7 +153,7 @@ function DeliveryMethod() {
               value="transferInAdvance"
               id="transferInAdvance"
               onChange={handlePaymentMethodChange}
-              checked={selectedPaymentMethod === "transferInAdvance"}
+              checked={cartCtx.selectedPaymentMethod === "transferInAdvance"}
             >
               <div className={classes.detailsChoose}>
                 <h1>Előreutalás</h1>
@@ -167,7 +162,7 @@ function DeliveryMethod() {
                 </p>
               </div>
             </RadioButton>
-            {showPaymentErrorMessage && (
+            {cartCtx.showPaymentErrorMessage && (
               <p className={classes.errorMessage}>
                 Nincs fizetési mód kiválasztva!
               </p>

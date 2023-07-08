@@ -17,9 +17,9 @@ const defaultCartState = {
     confirmation: false,
   },
   navigatePages: {
-    deliveryMethod: '/delivery-method',
-    deliveryDetails: '/delivery-details'
-  }
+    deliveryMethod: "/delivery-method",
+    deliveryDetails: "/delivery-details",
+  },
 };
 
 const cartReducer = (state, action) => {
@@ -66,7 +66,7 @@ const cartReducer = (state, action) => {
       shippingCost: updatedShippingCost,
     };
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-   // LOCALSTORAGE UPDTAE
+    // LOCALSTORAGE UPDTAE
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
@@ -99,14 +99,14 @@ const cartReducer = (state, action) => {
     if (updatedTotalAmount < 100000) {
       updatedShippingCost = defaultCartState.shippingCost;
     }
-   // LOCALSTORAGE UPDTAE
+    // LOCALSTORAGE UPDTAE
     const cartItems = {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
       shippingCost: updatedShippingCost,
     };
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-   // LOCALSTORAGE UPDTAE
+    // LOCALSTORAGE UPDTAE
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
@@ -124,7 +124,7 @@ function CartProvider(props) {
   );
 
   const [cssMobile, setCssMobile] = useState(true);
-  
+
   useEffect(() => {
     // Beolvassa a shippingCost értékét a localStorage-ból
     const shippingCostFromLocalStorage = localStorage.getItem("shippingCost");
@@ -153,7 +153,24 @@ function CartProvider(props) {
   };
 
   const [parentId, setParentId] = useState("");
-  const [nextPage, setNextPage] = useState("")
+  const [nextPage, setNextPage] = useState("");
+
+  //DeliveryMethod values
+  const [selectedShippingMethod, setSelectedShippingMethod] = useState("");
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [showPaymentErrorMessage, setShowPaymentErrorMessage] = useState(false);
+
+  //DeliveryDetails values
+  const [formValues, setFormValues] = useState({
+    email: "",
+    phone: "",
+    name: "",
+    postalCode: "",
+    city: "",
+    street: "",
+    floor: "",
+  });
 
   const cartContext = {
     items: cartState.items,
@@ -164,11 +181,11 @@ function CartProvider(props) {
       cart: false,
       order: false,
       data: false,
-      confirmation: false
+      confirmation: false,
     },
     navigatePages: {
-      deliveryMethod: '/delivery-method',
-      deliveryDetails: '/delivery-details'
+      deliveryMethod: "/delivery-method",
+      deliveryDetails: "/delivery-details",
     },
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
@@ -179,6 +196,16 @@ function CartProvider(props) {
     setParentId: setParentId,
     nextPage: nextPage,
     setNextPage: setNextPage,
+    selectedShippingMethod: selectedShippingMethod,
+    setSelectedShippingMethod: setSelectedShippingMethod,
+    selectedPaymentMethod: selectedPaymentMethod,
+    setSelectedPaymentMethod: setSelectedPaymentMethod,
+    showErrorMessage: showErrorMessage,
+    setShowErrorMessage: setShowErrorMessage,
+    showPaymentErrorMessage: showPaymentErrorMessage,
+    setShowPaymentErrorMessage: setShowPaymentErrorMessage,
+    formValues: formValues,
+    setFormValues: setFormValues,
   };
 
   return (
