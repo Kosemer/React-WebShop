@@ -31,7 +31,13 @@ function DeliveryMethod() {
 
   const handleButtonClick = () => {
     setClicked(true);
-    cartCtx.setNextPage(nextPage);
+
+    if (selectedShippingMethod && selectedPaymentMethod) {
+      cartCtx.setNextPage(nextPage);
+    } else {
+      setShowErrorMessage(!selectedShippingMethod);
+      setShowPaymentErrorMessage(!selectedPaymentMethod);
+    }
   };
 
   useEffect(() => {
