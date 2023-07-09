@@ -66,7 +66,7 @@ function OrderSummary(props) {
           </p>
           <div className={classes.button}>
             <button className={classes.btn} onClick={NavigateCheckout}>
-              Folytatás
+              {props.buttonText || "Folytatás"}
               <img
                 src={arrowContinue}
                 style={{

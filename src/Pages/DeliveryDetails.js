@@ -247,6 +247,7 @@ function DeliveryDetails() {
             handleContinueClick={
               shouldCallContinueClick ? handleContinueClick : null
             }
+            buttonText={"Rendelés"}
           ></OrderSummary>
         </section>
       </section>

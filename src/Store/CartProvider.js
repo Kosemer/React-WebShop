@@ -172,6 +172,9 @@ function CartProvider(props) {
     floor: "",
   });
 
+  //Order ID
+  const [orders, setOrders] = useState([]);
+
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
@@ -206,6 +209,8 @@ function CartProvider(props) {
     setShowPaymentErrorMessage: setShowPaymentErrorMessage,
     formValues: formValues,
     setFormValues: setFormValues,
+    orders: orders,
+    setOrders: setOrders,
   };
 
   return (
