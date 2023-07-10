@@ -16,24 +16,7 @@ const Order = () => {
   cartCtx.orderStatus.data = false;
   cartCtx.orderStatus.confirmation = false;
 
-  const [orderId, setOrderId] = useState("");
-
-  useEffect(() => {
-    const generateOrderId = () => {
-      // Az azonosító generálása
-      const existingIds =
-        cartCtx.orders.length > 0
-          ? cartCtx.orders.map((order) => order.id)
-          : [1000];
-      let newId = Math.max(...existingIds) + 1;
-      while (existingIds.includes(newId)) {
-        newId++;
-      }
-      setOrderId(newId.toString());
-    };
-
-    generateOrderId();
-  }, [cartCtx.orders]);
+  console.log(cartCtx.orderId);
 
   return (
     <Fragment>
@@ -45,7 +28,8 @@ const Order = () => {
         E-mail-ben elküldtük a rendelésed részleteit
       </p>
       <p className={classes.text}>
-        A <strong>{orderId}</strong> számú rendelésed feldolgozása megkezdődött.
+        A <strong>{cartCtx.orderId}</strong> számú rendelésed feldolgozása
+        megkezdődött.
       </p>
     </Fragment>
   );

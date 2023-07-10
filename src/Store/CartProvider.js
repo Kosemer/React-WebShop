@@ -10,6 +10,7 @@ const defaultCartState = {
   shippingCost: 1699,
   isLoggedIn: true,
   isBurgerMenuClicked: false,
+  orderId: 1000,
   orderStatus: {
     cart: false,
     order: false,
@@ -67,10 +68,14 @@ const cartReducer = (state, action) => {
     };
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     // LOCALSTORAGE UPDTAE
+
+    const updatedOrderId = state.orderId + 1;
+
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
       shippingCost: updatedShippingCost,
+      orderId: updatedOrderId,
     };
   }
   if (action.type === "REMOVE") {
@@ -180,6 +185,7 @@ function CartProvider(props) {
     totalAmount: cartState.totalAmount,
     shippingCost: cartState.shippingCost,
     isLoggedIn: true,
+    orderId: cartState.orderId,
     orderStatus: {
       cart: false,
       order: false,
