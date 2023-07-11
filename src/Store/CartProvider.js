@@ -185,7 +185,7 @@ function CartProvider(props) {
     totalAmount: cartState.totalAmount,
     shippingCost: cartState.shippingCost,
     isLoggedIn: true,
-    orderId: cartState.orderId,
+    orderId: defaultCartState.orderId,
     orderStatus: {
       cart: false,
       order: false,
