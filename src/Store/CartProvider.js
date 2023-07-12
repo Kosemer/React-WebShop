@@ -4,7 +4,7 @@ import CartContext from "./cart-context";
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cartItems"));
 const defaultShippingCost = 1699;
 const defaultCartState = {
-  // A localStorage- ből olvasom ki az adatokat, ha van.
+  // A localStorage-ből olvasom ki az adatokat, ha van.
   items: cartFromLocalStorage ? cartFromLocalStorage.items : [],
   totalAmount: cartFromLocalStorage ? cartFromLocalStorage.totalAmount : 0,
   shippingCost: 1699,
