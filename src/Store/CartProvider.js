@@ -28,7 +28,7 @@ const cartReducer = (state, action) => {
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
 
-    //Annak ellenőrzése, hogy a termék már a kosár része-e
+    //Annak ellenőrzése, hogy a termék már a kosár része-e.
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
     ); // Igaz lesz az értéke, ha az "item.id" egyenlő az "action.item.id"-val.
