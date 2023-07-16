@@ -73,7 +73,6 @@ function DeliveryMethod() {
         <section className={classes.items}>
           <Card>
             <h2 className={classes.titleBox}>Szállítási mód választás</h2>
-            <button onClick={handleButtonClick}>jksdfnknsdfknsdj</button>
             <RadioButton
               name="shippingMethod"
               value="homeDelivery"
