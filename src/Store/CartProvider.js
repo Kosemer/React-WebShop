@@ -10,7 +10,7 @@ const defaultCartState = {
   shippingCost: 1699,
   isLoggedIn: true,
   isBurgerMenuClicked: false,
-  orderId: 1000,
+  orderId: cartFromLocalStorage ? cartFromLocalStorage.orderId : 0,
   orderStatus: {
     cart: false,
     order: false,
@@ -60,16 +60,18 @@ const cartReducer = (state, action) => {
     if (updatedTotalAmount < 100000) {
       updatedShippingCost = defaultCartState.shippingCost;
     }
+
+    const updatedOrderId = cartFromLocalStorage ? cartFromLocalStorage.orderId : defaultCartState.orderId + 1;
+
     // LOCALSTORAGE UPDTAE
     const cartItems = {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
       shippingCost: updatedShippingCost,
+      orderId: updatedOrderId
     };
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     // LOCALSTORAGE UPDTAE
-
-    const updatedOrderId = state.orderId + 1;
 
     return {
       items: updatedItems,

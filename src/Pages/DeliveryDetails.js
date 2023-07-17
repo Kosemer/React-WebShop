@@ -5,11 +5,29 @@ import Card from "../Components/UI/Card";
 import OrderSummary from "../Components/Order/OrderSummary";
 import CartContext from "../Store/cart-context";
 import { useNavigate } from "react-router-dom";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getDatabase, ref, push, set } from "firebase/database";
+import { initializeApp } from "firebase/app";
+
+
 
 function DeliveryDetails() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA9I3pmY-2rE2GekX7A3angjr9GI8Gc-3U",
+    authDomain: "webshopproducts-c1673.firebaseapp.com",
+    databaseURL: "https://webshopproducts-c1673-default-rtdb.firebaseio.com",
+    projectId: "webshopproducts-c1673",
+    storageBucket: "webshopproducts-c1673.appspot.com",
+    messagingSenderId: "299385041421",
+    appId: "1:299385041421:web:f8fbc0b3be8c0d016a1b44",
+  };
+
+  const firestore = getFirestore();
 
   const navigate = useNavigate();
 
@@ -30,13 +48,37 @@ function DeliveryDetails() {
 
   const [continueClicked, setContinueClicked] = useState(false);
 
+
+  const database = getDatabase();
+const ordersRef = ref(database, "orders");
+const app = initializeApp(firebaseConfig);
+
   const handleContinueClick = () => {
     const isFormValid = Object.values(cartCtx.formValues).every(
       (value) => value !== ""
     );
-
     if (isFormValid) {
-      navigate("/rendeles");
+      const ordersRef = ref(getDatabase(app), "orders");
+      const newOrderRef = push(ordersRef);
+      
+      set(newOrderRef, {
+        email: cartCtx.formValues.email,
+        phone: cartCtx.formValues.phone,
+        name: cartCtx.formValues.name,
+        postalCode: cartCtx.formValues.postalCode,
+        city: cartCtx.formValues.city,
+        street: cartCtx.formValues.street,
+        floor: cartCtx.formValues.floor,
+        items: cartCtx.items,
+        totalAmount: cartCtx.totalAmount,
+        shippingCost: cartCtx.shippingCost,
+      })
+        .then(() => {
+          navigate("/rendeles");
+        })
+        .catch((error) => {
+          console.log("Hiba történt a rendelés mentése során:", error);
+        });
     } else {
       setContinueClicked(true);
       window.scrollTo(0, 0);
