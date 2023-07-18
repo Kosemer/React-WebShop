@@ -11,9 +11,8 @@ const navigate = useNavigate()
 
 const loginHandler = (event) => {
     event.preventDefault()
-    cartCtx.isLoggedIn = true;
+    cartCtx.setIsLoggedIn(true)
     navigate("/")
-    console.log(cartCtx.isLoggedIn)
 }
 
   return (

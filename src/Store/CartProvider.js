@@ -1,6 +1,7 @@
 import { useReducer, useState, useEffect } from "react";
 import CartContext from "./cart-context";
 
+
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cartItems"));
 const defaultShippingCost = 1699;
 const defaultCartState = {
@@ -8,7 +9,6 @@ const defaultCartState = {
   items: cartFromLocalStorage ? cartFromLocalStorage.items : [],
   totalAmount: cartFromLocalStorage ? cartFromLocalStorage.totalAmount : 0,
   shippingCost: 1699,
-  isLoggedIn: true,
   isBurgerMenuClicked: false,
   orderStatus: {
     cart: false,
@@ -126,6 +126,7 @@ function CartProvider(props) {
   );
 
   const [cssMobile, setCssMobile] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     // Beolvassa a shippingCost értékét a localStorage-ból
@@ -183,7 +184,6 @@ function CartProvider(props) {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     shippingCost: cartState.shippingCost,
-    isLoggedIn: true,
     orderStatus: {
       cart: false,
       order: false,
@@ -217,6 +217,8 @@ function CartProvider(props) {
     setOrders: setOrders,
     orderId: orderId,
     setOrderId: setOrderId,
+    isLoggedIn: isLoggedIn,
+    setIsLoggedIn: setIsLoggedIn
   };
 
   return (

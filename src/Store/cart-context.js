@@ -5,7 +5,6 @@ const CartContext = React.createContext({
   items: [],
   totalAmount: 0,
   shippingCost: 1699,
-  isLoggedIn: true,
   orderStatus: {
     cart: false,
     order: false,
@@ -21,7 +20,9 @@ const CartContext = React.createContext({
   cssMobile: true,
   setCssMobile: () => {},
   setCartItems: (items) => {},
-  replaceCartItems: (items) => {}
+  replaceCartItems: (items) => {},
+  isLoggedIn: false,
+  setIsLoggedIn: () => {},
 });
 
 export default CartContext;

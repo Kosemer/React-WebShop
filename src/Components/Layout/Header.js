@@ -8,6 +8,7 @@ import CartContext from "../../Store/cart-context";
 import BurgerButton from "../UI/BurgerButton";
 import CartButtonMobile from "../UI/CartButtonMobile";
 import LogoutIcon from "../../Assets/LogoutIcon";
+import { useState, useEffect } from "react";
 
 function Header(props) {
   const cartCtx = useContext(CartContext);
@@ -19,13 +20,41 @@ function Header(props) {
     setCssMobile(!cartCtx.cssMobile);
   };
 
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isScrollingUp = currentScrollPos < prevScrollPos;
+  
+      if (currentScrollPos === 0 || isScrollingUp) {
+
+        cartCtx.setIsLoggedIn(true)
+      } else {
+
+        cartCtx.setIsLoggedIn(false)
+      }
+  
+      setPrevScrollPos(currentScrollPos);
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
   //MOBILNÉZETBEN KOMPONENSEK ELTÜNTETÉSE
 
-  const headerClasses = `${classes.header} ${cssMobile ? classes.active : ""}`;
+  const headerClasses = `${classes.header} ${
+    cssMobile ? classes.active : ""
+  } ${cartCtx.isLoggedIn ? "" : classes.hidden}`;
 
   const navigate = useNavigate();
 
   const logoutHandler = () => {
+    cartCtx.setIsLoggedIn(false)
     navigate("/login");
   };
 
@@ -36,6 +65,8 @@ function Header(props) {
   /*const cartHandler = () => {
     navigate("/kosar");
   };*/
+
+
 
   return (
     <Fragment>

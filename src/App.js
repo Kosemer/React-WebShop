@@ -56,7 +56,7 @@ function App() {
   return (
     <CartProvider>
       {visibleCart && <Cart hideCartHandler={hideCartHandler}></Cart>}
-      <Header showCartHandler={showCartHandler}></Header>
+      {!cartCtx.isLoggedIn && <Header showCartHandler={showCartHandler}></Header>}
       {/*<Slider></Slider>*/}
       {/*<RouterProvider router={router}></RouterProvider>*/}
       <Routes>
