@@ -10,7 +10,6 @@ const defaultCartState = {
   shippingCost: 1699,
   isLoggedIn: true,
   isBurgerMenuClicked: false,
-  orderId: cartFromLocalStorage ? cartFromLocalStorage.orderId : 0,
   orderStatus: {
     cart: false,
     order: false,
@@ -61,14 +60,11 @@ const cartReducer = (state, action) => {
       updatedShippingCost = defaultCartState.shippingCost;
     }
 
-    const updatedOrderId = cartFromLocalStorage ? cartFromLocalStorage.orderId : defaultCartState.orderId + 1;
-
     // LOCALSTORAGE UPDTAE
     const cartItems = {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
       shippingCost: updatedShippingCost,
-      orderId: updatedOrderId
     };
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     // LOCALSTORAGE UPDTAE
@@ -77,7 +73,6 @@ const cartReducer = (state, action) => {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
       shippingCost: updatedShippingCost,
-      orderId: updatedOrderId,
     };
   }
   if (action.type === "REMOVE") {
@@ -162,6 +157,8 @@ function CartProvider(props) {
   const [parentId, setParentId] = useState("");
   const [nextPage, setNextPage] = useState("");
 
+  const [orderId, setOrderId] = useState("");
+
   //DeliveryMethod values
   const [selectedShippingMethod, setSelectedShippingMethod] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
@@ -187,7 +184,6 @@ function CartProvider(props) {
     totalAmount: cartState.totalAmount,
     shippingCost: cartState.shippingCost,
     isLoggedIn: true,
-    orderId: defaultCartState.orderId,
     orderStatus: {
       cart: false,
       order: false,
@@ -219,6 +215,8 @@ function CartProvider(props) {
     setFormValues: setFormValues,
     orders: orders,
     setOrders: setOrders,
+    orderId: orderId,
+    setOrderId: setOrderId,
   };
 
   return (

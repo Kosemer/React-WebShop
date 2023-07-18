@@ -9,13 +9,10 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getDatabase, ref, push, set } from "firebase/database";
 import { initializeApp } from "firebase/app";
 
-
-
 function DeliveryDetails() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
   const firebaseConfig = {
     apiKey: "AIzaSyA9I3pmY-2rE2GekX7A3angjr9GI8Gc-3U",
@@ -48,10 +45,9 @@ function DeliveryDetails() {
 
   const [continueClicked, setContinueClicked] = useState(false);
 
-
   const database = getDatabase();
-const ordersRef = ref(database, "orders");
-const app = initializeApp(firebaseConfig);
+  const ordersRef = ref(database, "orders");
+  const app = initializeApp(firebaseConfig);
 
   const handleContinueClick = () => {
     const isFormValid = Object.values(cartCtx.formValues).every(
@@ -60,7 +56,7 @@ const app = initializeApp(firebaseConfig);
     if (isFormValid) {
       const ordersRef = ref(getDatabase(app), "orders");
       const newOrderRef = push(ordersRef);
-      
+
       set(newOrderRef, {
         email: cartCtx.formValues.email,
         phone: cartCtx.formValues.phone,
@@ -72,8 +68,26 @@ const app = initializeApp(firebaseConfig);
         items: cartCtx.items,
         totalAmount: cartCtx.totalAmount,
         shippingCost: cartCtx.shippingCost,
+        selectedShippingMethod: cartCtx.selectedShippingMethod,
+        selectedPaymentMethod: cartCtx.selectedPaymentMethod,
       })
         .then(() => {
+          cartCtx.setOrderId(newOrderRef.key); // Rendelés azonosító kiolvasása
+          // Kosár tartalmának törlése
+          //cartCtx.replaceCartItems([]);
+
+          // Változók értékeinek nullázása
+          cartCtx.setSelectedShippingMethod("");
+          cartCtx.setSelectedPaymentMethod("");
+          cartCtx.setFormValues({
+            email: "",
+            phone: "",
+            name: "",
+            postalCode: "",
+            city: "",
+            street: "",
+            floor: "",
+          });
           navigate("/rendeles");
         })
         .catch((error) => {
