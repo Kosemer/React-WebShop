@@ -6,6 +6,7 @@ import StepProgressBar from "../Components/Order/StepProgressBar";
 import CartContext from "../Store/cart-context";
 import onlinePay from "../Assets/onlinePay.jpg";
 import RadioButton from "../Components/UI/RadioButton";
+import EmptyCart from "../Components/Order/EmptyCart";
 
 function DeliveryMethod() {
   const cartCtx = useContext(CartContext);
@@ -66,6 +67,8 @@ function DeliveryMethod() {
 
   return (
     <Fragment>
+      {!cartCtx.isCartEmpty && (
+        <div>
       <div className={classes.progressBar}>
         <StepProgressBar></StepProgressBar>
       </div>
@@ -173,6 +176,9 @@ function DeliveryMethod() {
           <OrderSummary handleButtonClick={handleButtonClick}></OrderSummary>
         </section>
       </section>
+      </div>
+      )}
+      {cartCtx.isCartEmpty && <EmptyCart></EmptyCart>}
     </Fragment>
   );
 }

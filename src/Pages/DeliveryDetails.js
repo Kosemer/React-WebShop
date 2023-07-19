@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getDatabase, ref, push, set } from "firebase/database";
 import { initializeApp } from "firebase/app";
+import EmptyCart from "../Components/Order/EmptyCart";
 
 function DeliveryDetails() {
   useEffect(() => {
@@ -71,11 +72,12 @@ function DeliveryDetails() {
         selectedShippingMethod: cartCtx.selectedShippingMethod,
         selectedPaymentMethod: cartCtx.selectedPaymentMethod,
       })
+
+      
         .then(() => {
           cartCtx.setOrderId(newOrderRef.key); // Rendelés azonosító kiolvasása
           // Kosár tartalmának törlése
           //cartCtx.replaceCartItems([]);
-
           // Változók értékeinek nullázása
           cartCtx.setSelectedShippingMethod("");
           cartCtx.setSelectedPaymentMethod("");
@@ -111,6 +113,8 @@ function DeliveryDetails() {
 
   return (
     <Fragment>
+      {!cartCtx.isCartEmpty && (
+        <div>
       <div className={classes.progressBar}>
         <StepProgressBar></StepProgressBar>
       </div>
@@ -307,6 +311,9 @@ function DeliveryDetails() {
           ></OrderSummary>
         </section>
       </section>
+      </div>
+       )}
+       {cartCtx.isCartEmpty && <EmptyCart></EmptyCart>}
     </Fragment>
   );
 }

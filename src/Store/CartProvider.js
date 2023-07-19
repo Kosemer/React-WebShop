@@ -127,6 +127,7 @@ function CartProvider(props) {
 
   const [cssMobile, setCssMobile] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isCartEmpty = cartState.items.length === 0;
 
   useEffect(() => {
     // Beolvassa a shippingCost értékét a localStorage-ból
@@ -218,7 +219,8 @@ function CartProvider(props) {
     orderId: orderId,
     setOrderId: setOrderId,
     isLoggedIn: isLoggedIn,
-    setIsLoggedIn: setIsLoggedIn
+    setIsLoggedIn: setIsLoggedIn,
+    isCartEmpty: isCartEmpty,
   };
 
   return (

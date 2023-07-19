@@ -59,7 +59,7 @@ function Kosar() {
 
   return (
     <Fragment>
-      {cartIsEmpty && (
+      {!cartCtx.isCartEmpty && (
         <div>
           <div className={classes.progressBar}>
           <StepProgressBar></StepProgressBar>
@@ -74,7 +74,7 @@ function Kosar() {
           </section>
         </div>
       )}
-      {!cartIsEmpty && <EmptyCart></EmptyCart>}
+      {cartCtx.isCartEmpty && <EmptyCart></EmptyCart>}
     </Fragment>
   );
 }

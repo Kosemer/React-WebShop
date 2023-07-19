@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Route, Routes, useMatch } from "react-router-dom";
+import { Route, Routes, useMatch, useLocation  } from "react-router-dom";
 import Cart from "./Components/Cart/Cart";
 import Header from "./Components/Layout/Header";
 import Memoriak from "./Pages/Memoriak";
@@ -24,6 +24,7 @@ function App() {
   const cartCtx = useContext(CartContext);
 
   const [visibleCart, setVisibleCart] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const showCartHandler = () => {
     setVisibleCart(true);
@@ -53,15 +54,24 @@ function App() {
   // Az aktuális oldal elérési útjából kiolvasom az oldal nevét
   const currentPage = match?.params?.page || "Home";
 
+  const location = useLocation();
+
+    // Az aktuális oldal elérési útját kiolvassuk az URL-ből
+    const currentPage2 = location.pathname.split("/")[1] || "Home";
+
+    // Ellenőrizzük, hogy az aktuális oldal a login oldal-e
+    const isLoginForm = currentPage2 === "login";
+
+
   return (
     <CartProvider>
       {visibleCart && <Cart hideCartHandler={hideCartHandler}></Cart>}
-      {!cartCtx.isLoggedIn && <Header showCartHandler={showCartHandler}></Header>}
+      {!isLoginForm  && <Header showCartHandler={showCartHandler}></Header>}
       {/*<Slider></Slider>*/}
       {/*<RouterProvider router={router}></RouterProvider>*/}
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
-        <Route path="login" element={<LoginForm></LoginForm>}></Route>
+        <Route path="login" element={<LoginForm setIsLoggedIn={setIsLoggedIn}></LoginForm>}></Route>
         <Route path="alaplapok" element={<Alaplapok></Alaplapok>}></Route>
         <Route path="memoriak" element={<Memoriak></Memoriak>}></Route>
         <Route

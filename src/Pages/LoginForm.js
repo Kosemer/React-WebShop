@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CartContext from "../Store/cart-context";
 import classes from "./LoginForm.module.css";
 
-function LoginForm() {
+function LoginForm(props) {
 
 const cartCtx = useContext(CartContext);
 
@@ -11,7 +11,7 @@ const navigate = useNavigate()
 
 const loginHandler = (event) => {
     event.preventDefault()
-    cartCtx.setIsLoggedIn(true)
+    props.setIsLoggedIn(true)
     navigate("/")
 }
 
