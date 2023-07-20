@@ -14,7 +14,7 @@ function OrderSummary(props) {
 
     if (props.handleContinueClick) {
       props.handleContinueClick();
-    } else {
+    } if (props.handleButtonClick) {
       props.handleButtonClick();
     }
   };
