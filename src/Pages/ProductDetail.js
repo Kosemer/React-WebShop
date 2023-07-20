@@ -16,7 +16,7 @@ const firebaseConfig = {
   messagingSenderId: "299385041421",
   appId: "1:299385041421:web:f8fbc0b3be8c0d016a1b44",
 };
-
+//
 // Firebase SDK inicializálása a konfigurációval
 const app = initializeApp(firebaseConfig);
 

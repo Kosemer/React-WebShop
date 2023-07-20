@@ -10,7 +10,11 @@ import StepProgressBar from "../Components/Order/StepProgressBar";
 function Kosar() {
   const cartCtx = useContext(CartContext);
 
-  cartCtx.setNextPage('/delivery-method')
+  const [nextPage, setNextPage] = useState('/delivery-method');
+
+  useEffect(() => {
+    cartCtx.setNextPage(nextPage);
+  }, [nextPage, cartCtx]);
    
 
   // ORDER STATUS BAR
