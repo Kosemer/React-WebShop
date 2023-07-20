@@ -124,7 +124,7 @@ function DeliveryDetails() {
             <h2 className={classes.titleBox}>Kapcsolattartás</h2>
             <div className={classes.fields}>
               <div className={classes.inputBox}>
-                <label for="email">E-mail:</label>
+                <label htmlFor="email">E-mail:</label>
                 <input
                   type="email"
                   id="email"
@@ -139,7 +139,7 @@ function DeliveryDetails() {
                 )}
               </div>
               <div className={classes.inputBox}>
-                <label for="phone">Telefonszám:</label>
+                <label htmlFor="phone">Telefonszám:</label>
                 <input
                   type="text"
                   id="phone"
@@ -158,7 +158,7 @@ function DeliveryDetails() {
             <h2 className={classes.titleBox}>Számlázási adatok</h2>
             <div className={classes.fields}>
               <div className={classes.inputBox}>
-                <label for="name">Név:</label>
+                <label htmlFor="name">Név:</label>
                 <input
                   type="text"
                   id="name"
@@ -174,7 +174,7 @@ function DeliveryDetails() {
                 )}
               </div>
               <div className={classes.inputBox}>
-                <label for="postalCode">Irányítószám:</label>
+                <label htmlFor="postalCode">Irányítószám:</label>
                 <input
                   type="text"
                   id="postalCode"
@@ -192,7 +192,7 @@ function DeliveryDetails() {
                 )}
               </div>
               <div className={classes.inputBox}>
-                <label for="city">Település:</label>
+                <label htmlFor="city">Település:</label>
                 <input
                   type="text"
                   id="city"
@@ -207,7 +207,7 @@ function DeliveryDetails() {
                 )}
               </div>
               <div className={classes.inputBox}>
-                <label for="street">Utca, házszám:</label>
+                <label htmlFor="street">Utca, házszám:</label>
                 <input
                   type="text"
                   id="street"
@@ -222,7 +222,7 @@ function DeliveryDetails() {
                 )}
               </div>
               <div className={classes.inputBox}>
-                <label for="floor">Emelet, ajtó:</label>
+                <label htmlFor="floor">Emelet, ajtó:</label>
                 <input
                   type="text"
                   id="floor"
@@ -238,7 +238,7 @@ function DeliveryDetails() {
                 )}
               </div>
               <div className={classes.inputBox}>
-                <label for="taxNumber">Adószám (ha van):</label>
+                <label htmlFor="taxNumber">Adószám (ha van):</label>
                 <input type="text" id="taxNumber" name="taxNumber"></input>
               </div>
             </div>
@@ -254,7 +254,7 @@ function DeliveryDetails() {
               <Fragment>
                 <h2 className={classes.titleBox}>Szállítási adatok</h2>
                 <div className={classes.fields}>
-                  <label for="name">Név:</label>
+                  <label htmlFor="name">Név:</label>
                   <input type="text" id="name" name="name" size="60"></input>
                   <div className={classes.inputBox}>
                     <label for="postalCode">Irányítószám:</label>
@@ -267,15 +267,15 @@ function DeliveryDetails() {
                     ></input>
                   </div>
                   <div className={classes.inputBox}>
-                    <label for="town">Település:</label>
+                    <label htmlFor="town">Település:</label>
                     <input type="text" id="town" name="town"></input>
                   </div>
                   <div className={classes.inputBox}>
-                    <label for="street">Utca, házszám:</label>
+                    <label htmlFor="street">Utca, házszám:</label>
                     <input type="text" id="street" name="street"></input>
                   </div>
                   <div className={classes.inputBox}>
-                    <label for="floor">Emelet, ajtó:</label>
+                    <label htmlFor="floor">Emelet, ajtó:</label>
                     <input
                       type="text"
                       id="floor"
@@ -288,7 +288,7 @@ function DeliveryDetails() {
             )}
             <h2 className={classes.titleBox}>Megjegyzés</h2>
             <div className={classes.fieldsComment}>
-              <label for="comment">
+              <label htmlFor="comment">
                 Ha bármilyen további információt szeretne közölni, akkor
                 használja az alábbi mezőt:
               </label>
