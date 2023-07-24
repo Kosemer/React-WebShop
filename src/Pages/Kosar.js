@@ -10,8 +10,7 @@ import StepProgressBar from "../Components/Order/StepProgressBar";
 function Kosar() {
   const cartCtx = useContext(CartContext);
 
-  cartCtx.setNextPage('/delivery-method')
-   
+  cartCtx.setNextPage("/delivery-method");
 
   // ORDER STATUS BAR
   cartCtx.orderStatus.cart = true;
@@ -39,7 +38,6 @@ function Kosar() {
     cartCtx.removeItem(id);
   };
 
-
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCtx.items.map((item) => (
@@ -56,13 +54,12 @@ function Kosar() {
     </ul>
   );
 
-
   return (
     <Fragment>
       {!cartCtx.isCartEmpty && (
         <div>
           <div className={classes.progressBar}>
-          <StepProgressBar></StepProgressBar>
+            <StepProgressBar></StepProgressBar>
           </div>
           <section className={classes.products}>
             <section className={classes.items}>
