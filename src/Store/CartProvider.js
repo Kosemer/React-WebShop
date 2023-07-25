@@ -148,7 +148,7 @@ function CartProvider(props) {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
 
-  /////
+  //////////
   const replaceCartItems = (items) => {
     dispatchCartAction({
       type: "REPLACE",
