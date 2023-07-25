@@ -10,7 +10,7 @@ import EmptyCart from "../Components/Order/EmptyCart";
 
 function DeliveryMethod() {
   const cartCtx = useContext(CartContext);
-
+//
   let nextPage = "/delivery-details";
 
   const handleShippingMethodChange = (event) => {
