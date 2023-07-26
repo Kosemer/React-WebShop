@@ -20,6 +20,7 @@ function DeliveryMethod() {
 
   };
 
+
   const handlePaymentMethodChange = (event) => {
     cartCtx.setSelectedPaymentMethod(event.target.value);
     cartCtx.setShowPaymentErrorMessage(false);

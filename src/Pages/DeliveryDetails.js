@@ -72,7 +72,7 @@ function DeliveryDetails() {
         selectedShippingMethod: cartCtx.selectedShippingMethod,
         selectedPaymentMethod: cartCtx.selectedPaymentMethod,
       })
-
+////
       
         .then(() => {
           cartCtx.setOrderId(newOrderRef.key); // Rendelés azonosító kiolvasása
