@@ -19,7 +19,7 @@ function OrderSummary(props) {
     }
   };
 
-  // TOTALAMOUNT FORMÁZÁSA
+  /// TOTALAMOUNT FORMÁZÁSA
   const totalAmount = cartCtx.totalAmount.toLocaleString("hu-HU", {
     style: "currency",
     currency: "HUF",
