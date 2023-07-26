@@ -16,7 +16,9 @@ function DeliveryMethod() {
   const handleShippingMethodChange = (event) => {
     cartCtx.setSelectedShippingMethod(event.target.value);
     cartCtx.setShowErrorMessage(false);
+
   };////////////
+
 
   const handlePaymentMethodChange = (event) => {
     cartCtx.setSelectedPaymentMethod(event.target.value);
