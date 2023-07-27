@@ -14,6 +14,7 @@ function DeliveryDetails() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
 
   const firebaseConfig = {
     apiKey: "AIzaSyA9I3pmY-2rE2GekX7A3angjr9GI8Gc-3U",
@@ -90,7 +91,9 @@ function DeliveryDetails() {
             street: "",
             floor: "",
           });
+          cartCtx.resetCartHandler()
           navigate("/rendeles");
+          
         })
         .catch((error) => {
           console.log("Hiba történt a rendelés mentése során:", error);

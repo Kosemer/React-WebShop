@@ -22,6 +22,8 @@ const defaultCartState = {
   },
 };
 
+
+
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
     const updatedTotalAmount =
@@ -115,6 +117,19 @@ const cartReducer = (state, action) => {
       shippingCost: updatedShippingCost,
     };
   }
+  if (action.type === "RESET") {
+    const defaultCartState = {
+      items: [],
+      totalAmount: 0,
+      shippingCost: 0,
+    };
+  
+    // Frissítsük a localStorage-ban tárolt kosár állapotot is
+    localStorage.setItem("", JSON.stringify(defaultCartState));
+  
+    // Visszatérünk az alapértelmezett kosár állapotával
+    return defaultCartState;
+  }
   return { defaultCartState };
 };
 
@@ -146,6 +161,10 @@ function CartProvider(props) {
 
   const removeItemFromCartHandler = (id) => {
     dispatchCartAction({ type: "REMOVE", id: id });
+  };
+
+  const resetCartHandler = () => {
+    dispatchCartAction({ type: "RESET" });
   };
 
   /////
@@ -197,6 +216,7 @@ function CartProvider(props) {
     },
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
+    resetCartHandler: resetCartHandler,
     cssMobile: cssMobile,
     setCssMobile: setCssMobile,
     replaceCartItems: replaceCartItems,
