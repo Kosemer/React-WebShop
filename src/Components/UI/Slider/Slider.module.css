@@ -1,6 +1,6 @@
 .awsBtn {
   /*General*/
-  --slider-height-percentage: 60%;
+  --slider-height-percentage: 50%;
   --slider-transition-duration: 700ms;
   /*Arrows*/
   --organic-arrow-thickness: 4px;
