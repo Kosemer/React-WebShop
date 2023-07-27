@@ -9,6 +9,11 @@ import RadioButton from "../Components/UI/RadioButton";
 import EmptyCart from "../Components/Order/EmptyCart";
 
 function DeliveryMethod() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const cartCtx = useContext(CartContext);
 
   let nextPage = "/delivery-details";

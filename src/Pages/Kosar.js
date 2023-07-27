@@ -8,6 +8,11 @@ import EmptyCart from "../Components/Order/EmptyCart";
 import StepProgressBar from "../Components/Order/StepProgressBar";
 
 function Kosar() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const cartCtx = useContext(CartContext);
 
   const [nextPage, setNextPage] = useState('/delivery-method');
