@@ -52,12 +52,21 @@ function DeliveryDetails() {
   const app = initializeApp(firebaseConfig);
 
   const handleContinueClick = () => {
+    console.log('cartCtx.items:', cartCtx.items);
     const isFormValid = Object.values(cartCtx.formValues).every(
       (value) => value !== ""
     );
     if (isFormValid) {
       const ordersRef = ref(getDatabase(app), "orders");
       const newOrderRef = push(ordersRef);
+
+      /*const processedItems = cartCtx.items.map((item) => {
+        // Adjuk meg az alapértelmezett értéket a 'processor' tulajdonságnak, ha hiányzik vagy nincs megadva.
+        const processor = item.processor || "Alapértelmezett processzor";
+        const memory = item.memory || "Alapértelmezett memória";
+        const connectivity = item.connectivity || "Alapértelmezett kapcsolat";
+        return { ...item, processor, memory, connectivity };
+      });*/
 
       set(newOrderRef, {
         email: cartCtx.formValues.email,

@@ -18,6 +18,10 @@
   margin-bottom: 2rem;
 }
 
+.backToHome{
+  color: rgb(0, 17, 255);
+}
+
 @media (max-width: 768px) {
   .progressBar {
     max-width: 100%;

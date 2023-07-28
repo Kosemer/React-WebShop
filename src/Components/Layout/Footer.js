@@ -60,33 +60,33 @@ function Footer() {
           <h2>Szolgáltatások</h2>
           <hr className={classes.underline}></hr>
           <div className={classes.linkContainer}>
-            <NavLink to="/arak" className={classes.linkText}>
-              Portré fotózás
+            <NavLink to="" className={classes.linkText}>
+            Szállítási lehetőségek
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/arak" className={classes.linkText}>
-              Esküvői fotózás
+            <NavLink to="" className={classes.linkText}>
+            Fizetési lehetőségek
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/arak" className={classes.linkText}>
-              Boudoir fotózás
+            <NavLink to="" className={classes.linkText}>
+            Reklamáció és <br></br>termékvisszaküldés
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/arak" className={classes.linkText}>
-              Sport fotózás
+            <NavLink to="" className={classes.linkText}>
+            Gyakori kérdések
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/arak" className={classes.linkText}>
-              Családi fotózás
+            <NavLink to="" className={classes.linkText}>
+            Megrendelés állapota
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/arak" className={classes.linkText}>
-              Rendezvény fotózás
+            <NavLink to="" className={classes.linkText}>
+            Karrier
             </NavLink>
           </div>
         </div>
@@ -100,27 +100,27 @@ function Footer() {
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/galeria" className={classes.linkText}>
+            <NavLink to="/" className={classes.linkText}>
               Galéria
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/arak" className={classes.linkText}>
+            <NavLink to="" className={classes.linkText}>
               Árak
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/rolam" className={classes.linkText}>
+            <NavLink to="/" className={classes.linkText}>
               Rólam
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/kapcsolat" className={classes.linkText}>
+            <NavLink to="/" className={classes.linkText}>
               Kapcsolat
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/login" className={classes.linkText}>
+            <NavLink to="/" className={classes.linkText}>
               Admin
             </NavLink>
           </div>

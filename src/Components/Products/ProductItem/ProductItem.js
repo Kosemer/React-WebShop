@@ -27,10 +27,10 @@ function ProductItem(props) {
       amount: 1,
       parentId: props.parentId,
       price: props.price,
-      processor: props.processor,
+      //processor: props.processor,
       image: props.image,
-      memory: props.memory,
-      connectivity: props.connectivity,
+      //memory: props.memory,
+      //connectivity: props.connectivity,
     };
 
     cartCtx.addItem(newItem);

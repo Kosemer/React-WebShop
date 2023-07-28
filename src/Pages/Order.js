@@ -19,6 +19,21 @@ const Order = () => {
 
   console.log(cartCtx.orderId);
 
+  // Aktuális dátum létrehozása
+  const currentDate = new Date();
+  
+  // +2 nap hozzáadása az aktuális dátumhoz
+  const deliveryDate = new Date(currentDate);
+  deliveryDate.setDate(deliveryDate.getDate() + 2);
+
+  // Dátum formázása "YYYY-MM-DD" formátumra
+  const formatteddeliveryDate = deliveryDate.toLocaleDateString("hu-HU", { year: "numeric", month: "2-digit", day: "2-digit" });
+
+  const shipping = cartCtx.selectedPaymentMethod;
+  
+
+  console.log(shipping)
+
   return (
     <Fragment>
       <div className={classes.progressBar}>
@@ -27,9 +42,11 @@ const Order = () => {
       <h1 className={classes.thankYou}>Köszönjük, hogy minket választottál!</h1>
       <p className={classes.text}>Rendelésed azonoísótja: <strong>{cartCtx.orderId}</strong></p>
       <p className={classes.text}>
-      Rendelésed feldolgozása megkezdődött, e-mail-ben elküldtük a részleteket.
+      Rendelésed feldolgozása megkezdődött, e-mail-ben elküldtük a részleteket.{cartCtx.selectedPaymentMethod}
       </p>
-      <p className={classes.text}>Vissza a <NavLink to="/">főoldalra</NavLink>.</p>
+      
+      <p className={classes.text}>Várható szállítási határidő: <strong>{formatteddeliveryDate}</strong></p>
+      <p className={classes.text}>Vissza a <NavLink to="/"><strong className={classes.backToHome}>főoldalra</strong></NavLink>.</p>
       
     </Fragment>
   );

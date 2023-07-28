@@ -35,7 +35,9 @@ const AvailableProducts = (props) => {
           description: responseData[key].description,
           price: responseData[key].price,
           image: responseData[key].image,
-          processor: responseData[key].processor,
+          //processor: responseData[key].processor,
+          //memory: responseData[key].memory,
+          //connectivity: responseData[key].connectivity
         });
       }
       setProducts(loadedProducts);

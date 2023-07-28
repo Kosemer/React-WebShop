@@ -126,7 +126,7 @@ const cartReducer = (state, action) => {
   
     // Frissítsük a localStorage-ban tárolt kosár állapotot is
     localStorage.setItem("", JSON.stringify(defaultCartState));
-  
+    localStorage.removeItem("cartItems");
     // Visszatérünk az alapértelmezett kosár állapotával
     return defaultCartState;
   }

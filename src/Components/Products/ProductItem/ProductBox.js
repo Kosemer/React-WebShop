@@ -30,10 +30,10 @@ const ProductBox = (props) => {
       amount: 1,
       parentId: parentId,
       price: price,
-      processor: processor,
+      //processor: processor,
       image: image,
-      memory: memory,
-      connectivity: connectivity,
+      //memory: memory,
+      //connectivity: connectivity,
     };
     cartCtx.addItem(newItem);
   };
