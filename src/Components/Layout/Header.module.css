@@ -176,14 +176,167 @@
 
 /* Tablet eszközök (közepes képernyő) */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    z-index: 50;
+  }
 
+  .header nav {
+    margin-top: 5rem;
+    position: absolute;
+    left: 0px;
+    top: 0;
+    z-index: 999;
+    height: 100vh;
+    background-color: #fefefe;
+    transition: 0.2s;
+  }
+
+  .header.active nav {
+    top: 2000px;
+  }
+
+  .header ul {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #1f1e1d;
+    padding-bottom: 1rem;
+  }
+
+  .header li {
+    margin-bottom: 2rem;
+  }
+  .header a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 550;
+  }
+  .header a:hover,
+  .header a:active,
+  .header a.active {
+    color: #090909;
+    padding-bottom: 0.25rem;
+    border-bottom: 4px solid #0066cc;
+  }
+
+  .logoutIcon {
+    cursor: pointer;
+    max-width: 10%;
+  }
+  .burgerButton {
+    display: block;
+  }
+  .numberOfCartItems {
+    height: 80%;
+  }
+  .badge {
+    color: #090909;
+    background-color: #d9d9d9;
+    padding: 0.25rem 1rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+    font-weight: bold;
+  }
+  .headerCartButton {
+    display: none;
+  }
+  .cartButtonMobile {
+    display: block;
+    margin-left: 2rem;
+  }
+  .HomePageIcon {
+    cursor: pointer;
+    padding-right: 0px;
+    padding-bottom: 20px;
+    font-size: 1.5rem;
+  }
 }
 
 /* Kisebb asztali és laptop kijelzők */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    z-index: 50;
+  }
 
+  .header nav {
+    margin-top: 5rem;
+    position: absolute;
+    left: 0px;
+    top: 0;
+    z-index: 999;
+    height: 100vh;
+    background-color: #fefefe;
+    transition: 0.2s;
+  }
+
+  .header.active nav {
+    top: 2000px;
+  }
+
+  .header ul {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #1f1e1d;
+    padding-bottom: 1rem;
+  }
+
+  .header li {
+    margin-bottom: 2rem;
+  }
+  .header a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 550;
+  }
+  .header a:hover,
+  .header a:active,
+  .header a.active {
+    color: #090909;
+    padding-bottom: 0.25rem;
+    border-bottom: 4px solid #0066cc;
+  }
+
+  .logoutIcon {
+    cursor: pointer;
+    max-width: 10%;
+  }
+  .burgerButton {
+    display: block;
+  }
+  .numberOfCartItems {
+    height: 80%;
+  }
+  .badge {
+    color: #090909;
+    background-color: #d9d9d9;
+    padding: 0.25rem 1rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+    font-weight: bold;
+  }
+  .headerCartButton {
+    display: none;
+  }
+  .cartButtonMobile {
+    display: block;
+    margin-left: 2rem;
+  }
+  .HomePageIcon {
+    cursor: pointer;
+    padding-right: 0px;
+    padding-bottom: 20px;
+    font-size: 1.5rem;
+  }
 }
 
 /* Nagyobb asztali kijelzők és TV-k */
 @media only screen and (min-width: 1200px) {
+  
 }

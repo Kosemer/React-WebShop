@@ -102,7 +102,7 @@ function Header(props) {
                     Videókártya
                   </NavLink>
                 </li>
-
+ 
               </ul>
             </nav>
 
