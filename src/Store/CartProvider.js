@@ -183,6 +183,10 @@ function CartProvider(props) {
   //DeliveryMethod values
   const [selectedShippingMethod, setSelectedShippingMethod] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+
+  const [temporaryShippingMethod, setTemporaryShippingMethod] = useState("")
+  const [temporaryPaymentMethod, setTemporaryPaymentMethod] = useState("")
+
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [showPaymentErrorMessage, setShowPaymentErrorMessage] = useState(false);
 
@@ -241,6 +245,10 @@ function CartProvider(props) {
     isLoggedIn: isLoggedIn,
     setIsLoggedIn: setIsLoggedIn,
     isCartEmpty: isCartEmpty,
+    temporaryShippingMethod: temporaryShippingMethod,
+    setTemporaryShippingMethod: setTemporaryShippingMethod,
+    temporaryPaymentMethod: temporaryPaymentMethod,
+    setTemporaryPaymentMethod: setTemporaryPaymentMethod
   };
 
   return (

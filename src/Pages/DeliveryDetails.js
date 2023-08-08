@@ -51,8 +51,10 @@ function DeliveryDetails() {
   const ordersRef = ref(database, "orders");
   const app = initializeApp(firebaseConfig);
 
+
   const handleContinueClick = () => {
     console.log('cartCtx.items:', cartCtx.items);
+
     const isFormValid = Object.values(cartCtx.formValues).every(
       (value) => value !== ""
     );

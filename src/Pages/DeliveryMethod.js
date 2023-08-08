@@ -20,11 +20,13 @@ function DeliveryMethod() {
 
   const handleShippingMethodChange = (event) => {
     cartCtx.setSelectedShippingMethod(event.target.value);
+    cartCtx.setTemporaryShippingMethod(event.target.value)
     cartCtx.setShowErrorMessage(false);
   };
 
   const handlePaymentMethodChange = (event) => {
     cartCtx.setSelectedPaymentMethod(event.target.value);
+    cartCtx.setTemporaryPaymentMethod(event.target.value)
     cartCtx.setShowPaymentErrorMessage(false);
   };
 
@@ -84,10 +86,10 @@ function DeliveryMethod() {
                 <h2 className={classes.titleBox}>Szállítási mód választás</h2>
                 <RadioButton
                   name="shippingMethod"
-                  value="homeDelivery"
-                  id="homeDelivery"
+                  value="Házhozszállítás"
+                  id="Házhozszállítás"
                   onChange={handleShippingMethodChange}
-                  checked={cartCtx.selectedShippingMethod === "homeDelivery"}
+                  checked={cartCtx.selectedShippingMethod === "Házhozszállítás"}
                 >
                   <div className={classes.detailsChoose}>
                     <h1>Házhozszállítás GLS futárral</h1>
@@ -101,10 +103,10 @@ function DeliveryMethod() {
                 <hr className={classes.line}></hr>
                 <RadioButton
                   name="shippingMethod"
-                  value="pickup"
-                  id="pickup"
+                  value="Személyes átvétel"
+                  id="Személyes átvétel"
                   onChange={handleShippingMethodChange}
-                  checked={cartCtx.selectedShippingMethod === "pickup"}
+                  checked={cartCtx.selectedShippingMethod === "Személyes átvétel"}
                 >
                   <div className={classes.detailsChoose}>
                     <h1>Személyes átvétel</h1>
@@ -127,10 +129,10 @@ function DeliveryMethod() {
                 <h2 className={classes.titleBox}>Fizetési mód</h2>
                 <RadioButton
                   name="paymentMethod"
-                  value="creditCard"
-                  id="creditCard"
+                  value="Kifizetve"
+                  id="Kifizetve"
                   onChange={handlePaymentMethodChange}
-                  checked={cartCtx.selectedPaymentMethod === "creditCard"}
+                  checked={cartCtx.selectedPaymentMethod === "Kifizetve"}
                 >
                   <div className={classes.detailsChoose}>
                     <h1>Internetes fizetés bankkártyával, hitelkártyával.</h1>
@@ -144,10 +146,10 @@ function DeliveryMethod() {
                 <hr className={classes.line}></hr>
                 <RadioButton
                   name="paymentMethod"
-                  value="locally"
-                  id="locally"
+                  value="Utánvét"
+                  id="Utánvét"
                   onChange={handlePaymentMethodChange}
-                  checked={cartCtx.selectedPaymentMethod === "locally"}
+                  checked={cartCtx.selectedPaymentMethod === "Utánvét"}
                 >
                   <div className={classes.detailsChoose}>
                     <h1>Utánvét</h1>
@@ -160,11 +162,11 @@ function DeliveryMethod() {
                 <hr className={classes.line}></hr>
                 <RadioButton
                   name="paymentMethod"
-                  value="transferInAdvance"
-                  id="transferInAdvance"
+                  value="Előreutalás"
+                  id="Előreutalás"
                   onChange={handlePaymentMethodChange}
                   checked={
-                    cartCtx.selectedPaymentMethod === "transferInAdvance"
+                    cartCtx.selectedPaymentMethod === "Előreutalás"
                   }
                 >
                   <div className={classes.detailsChoose}>
