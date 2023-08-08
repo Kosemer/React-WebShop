@@ -8,6 +8,7 @@ import CartContext from "../../Store/cart-context";
 import ProductBox from "./ProductItem/ProductBox";
 
 const AvailableProducts = (props) => {
+  
 
   const cartCtx = useContext(CartContext);
 

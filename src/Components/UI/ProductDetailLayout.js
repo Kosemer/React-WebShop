@@ -1,10 +1,15 @@
 import classes from "./ProductDetailLayout.module.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import CartContext from "../../Store/cart-context";
 import calendarIcon from "../../Assets/calendarIcon.ico";
 import locationIcon from "../../Assets/locationIcon.ico";
 
 function ProductDetailLayout(props) {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const cartCtx = useContext(CartContext);
   const addToCartHandler = () => {
     cartCtx.addItem({

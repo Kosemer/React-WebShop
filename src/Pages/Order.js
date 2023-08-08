@@ -5,6 +5,7 @@ import { useState } from "react";
 import StepProgressBar from "../Components/Order/StepProgressBar";
 import { NavLink, useNavigate } from "react-router-dom";
 import EmptyCart from "../Components/Order/EmptyCart";
+import DeliveryMethod from "../Pages/DeliveryMethod";
 
 const Order = () => {
   useEffect(() => {
@@ -43,7 +44,6 @@ const Order = () => {
             <StepProgressBar></StepProgressBar>
           </div>
           <h1 className={classes.thankYou}>Köszönjük, hogy minket választottál!</h1>
-
           <table>
             <thead>
               <tr>
@@ -60,7 +60,6 @@ const Order = () => {
               </tr>
             </tbody>
           </table>
-
           <p className={classes.text}>
             Rendelésed feldolgozása megkezdődött, e-mail-ben elküldtük a részleteket.{cartCtx.selectedPaymentMethod}
           </p>

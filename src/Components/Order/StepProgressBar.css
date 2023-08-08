@@ -181,7 +181,7 @@
 
 @media (min-width: 600px) {
     .step-wizard-item{  /*FEHÉR SÁV*/
-        min-width: 8rem;
+        min-width: 8em;
     }
     .progress-label{
         font-size: 12px;
