@@ -1,26 +1,26 @@
 .products {
-    max-width: 70rem;
-    width: 90%;
-    margin: 2rem auto;
-    animation: products-appear 1s ease-out forwards;
-  }
-  
-  .products ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-  }
+  max-width: 70rem;
+  width: 90%;
+  margin: 2rem auto;
+  animation: products-appear 1s ease-out forwards;
+}
 
-  input::placeholder {
-    color: rgb(25, 25, 25);
-  }
+.products ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .noResults{
-    text-align: center;
-    font-weight: 600;
-  }
+input::placeholder {
+  color: rgb(25, 25, 25);
+}
+
+.noResults {
+  text-align: center;
+  font-weight: 600;
+}
 
 .filterBar {
   display: flex;
@@ -28,60 +28,116 @@
   align-items: center;
   padding: 1rem;
   margin-bottom: 2rem;
-  background-color: rgba(67, 69, 67, 0.3);
+  background-color: rgb(0, 17, 255, 0.4);
+  ;
   border-radius: 5px;
   width: 100%;
+  flex-wrap: wrap;
+  /* Hozzáadva: sorok tördelése szükség esetén */
+
 }
 
-.productCount{
-  padding: 1rem;
-  color: #2e2d2d;
+.searchBar {
+  flex: 1;
+  /* Az input fog elfoglalni minél több helyet, ahogy szűkül a képernyő */
+  margin-right: 1rem;
+  /* Térköz a szűrőelemek között */
 }
 
-.searchBar input {
-  font-size: 1rem; /* növeli az input mező méretét */
-  padding: 0.2rem 0.6rem; /* növeli a padding méretét */
+.sortBy {
+  flex: 1;
+  /* Azonos arányban fog osztozni a helyen a szűrőelemek között */
+  margin-right: 1rem;
 }
 
 .sortBy select {
-  font-size: 1rem; /* növeli a select méretét */
-  padding: 0.2rem 0.6rem; /* növeli a padding méretét */
-  color: #2e2d2d;
+  background-color: white;
 }
-  
+
+.productCount {
+  flex: 1;
+  /* Azonos arányban fog osztozni a helyen a szűrőelemek között */
+
+}
+
+.categoryDescription {
+  padding: 0rem;
+}
+
+.categoryDescription h2 {
+  color: #0066cc;
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+
+.description {
+  color: rgb(58, 54, 54);
+}
+
+.title{
+  font-size: 10px;
+}
+
+.popularProducts {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.popularProducts div {
+  flex-basis: calc(33% - 1rem);
+  padding-bottom: 1rem;
+}
+
+
+@keyframes products-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .filterBar {
+    flex-direction: column;
+    /* Oszlopokba rendeződik a szűrőelemek tartalma */
+    text-align: center;
+  }
+
   .searchBar,
-  .sortBy {
-    display: flex;
-    align-items: center;
+  .sortBy,
+  .productCount {
+    flex: none;
+    /* A szélesség fix, nem oszlik többé azonos arányban */
+    width: 100%;
+    /* Teljes szélességű elemek az oszlopokban */
+    margin: 0 0 1rem;
+    /* Térköz a szűrőelemek között és az aljához */
+
   }
-  
+
   .searchBar {
-    margin-right: 1rem;
+    padding-top: 1rem;
   }
 
-  .categoryDescription{
-    padding: 1rem;
+  .searchBar input,
+  .sortBy select {
+    width: 100%;
+    /* Input mező és select elem teljes szélességű */
+    height: 40px;
+    max-height: 40px;
   }
 
-  .categoryDescription h2{
-    color: #0066cc;
-    font-size: 1.8rem;
-    margin-top: 0;
-    margin-bottom: 1.2rem;
+  .productCount {
+    padding-top: 1rem;
   }
-
-  .description{
-    color: rgb(58, 54, 54);
-  }
-  
-  @keyframes products-appear {
-    from {
-      opacity: 0;
-      transform: translateY(3rem);
-    }
-  
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+}

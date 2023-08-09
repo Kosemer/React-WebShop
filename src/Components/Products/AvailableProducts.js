@@ -65,16 +65,17 @@ const AvailableProducts = (props) => {
       }
     })
     .map((item) => (
-      <ProductBox
-        id={item.id}
-        key={item.id}
-        parentId={item.parentId}
-        name={item.name}
-        description={item.description}
-        price={item.price}
-        image={item.image}
-        processor={item.processor}
-      ></ProductBox>
+      <section className={classes.popularProducts} key={item.id}>
+        <ProductBox
+          id={item.id}
+          parentId={item.parentId}
+          name={item.name}
+          description={item.description}
+          price={item.price}
+          image={item.image}
+          processor={item.processor}
+        />
+      </section>
     ));
 
   const handleSearchInputChange = (event) => {
@@ -107,7 +108,7 @@ const AvailableProducts = (props) => {
           <Card>
             {/*category description */}
             <div className={classes.categoryDescription}>
-              <h2>{props.title}</h2>
+              <h2 className={classes.title}>{props.title}</h2>
               <p className={classes.description}>{props.description}</p>
             </div>
             {/*category description END */}
@@ -136,8 +137,7 @@ const AvailableProducts = (props) => {
                 Összesen {productsList.length} termék.
               </div>
             </div>
-
-            <ul className={classes.productsList}>{productsList}</ul>
+            {productsList}
           </Card>
         )}
 

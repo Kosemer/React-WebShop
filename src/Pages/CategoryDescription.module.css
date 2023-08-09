@@ -1,19 +1,35 @@
-.container{
-    width: 90%; 
+.container {
+    width: 90%;
     margin: 0 auto;
     padding-bottom: 3rem;
     max-width: 60rem;
 }
 
-.container h2{
+.container h2 {
     color: #0066cc;
     font-size: 2rem;
 }
 
-.description{
+.description {
     color: rgb(58, 54, 54);
 }
 
-.p{
+.p {
     padding: 0;
 }
+
+@media screen and (max-width: 600px) {
+    .container h2 {
+        color: #0066cc;
+        font-size: 1.3rem;
+    }
+    .description {
+        color: rgb(58, 54, 54);
+        font-size: 0.9rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {}
