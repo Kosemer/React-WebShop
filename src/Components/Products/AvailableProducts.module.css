@@ -1,6 +1,6 @@
 .products {
-  max-width: 70rem;
-  width: 90%;
+  max-width: 70%;
+  width: 100%;
   margin: 2rem auto;
   animation: products-appear 1s ease-out forwards;
 }
@@ -75,7 +75,7 @@ input::placeholder {
   color: rgb(58, 54, 54);
 }
 
-.title{
+.title {
   font-size: 10px;
 }
 
@@ -89,7 +89,7 @@ input::placeholder {
 }
 
 .popularProducts div {
-  flex-basis: calc(50% - 1rem);
+  flex-basis: calc(25% - 1rem);
   padding-bottom: 1rem;
 }
 
@@ -106,7 +106,28 @@ input::placeholder {
   }
 }
 
-@media (max-width: 768px) {
+
+
+/*MOBIL*/
+@media screen and (max-width: 767px) {
+  .products {
+    max-width: 90%;
+    width: 90%;
+    margin: 2rem auto;
+    animation: products-appear 1s ease-out forwards;
+  }
+  .popularProducts {
+    width: 100%;
+    background-color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .popularProducts div {
+    flex-basis: calc(50% - 1rem);
+    padding-bottom: 1rem;
+  }
   .filterBar {
     flex-direction: column;
     /* Oszlopokba rendeződik a szűrőelemek tartalma */
@@ -139,5 +160,27 @@ input::placeholder {
 
   .productCount {
     padding-top: 1rem;
+  }
+}
+
+/*TABLET*/
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .products {
+    max-width: 90%;
+    width: 90%;
+    margin: 2rem auto;
+    animation: products-appear 1s ease-out forwards;
+  }
+  .popularProducts {
+    width: 100%;
+    background-color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .popularProducts div {
+    flex-basis: calc(25% - 1rem);
+    padding-bottom: 1rem;
   }
 }

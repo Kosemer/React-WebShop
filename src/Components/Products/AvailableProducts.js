@@ -51,32 +51,37 @@ const AvailableProducts = (props) => {
   
 
 
-  const productsList = products
-    .filter((item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .sort((a, b) => {
-      if (sortOrder === "asc") {
-        return a.price - b.price;
-      } else if (sortOrder === "desc") {
-        return b.price - a.price;
-      } else {
-        return 0;
-      }
-    })
-    .map((item) => (
-      <section className={classes.popularProducts} key={item.id}>
-        <ProductBox
-          id={item.id}
-          parentId={item.parentId}
-          name={item.name}
-          description={item.description}
-          price={item.price}
-          image={item.image}
-          processor={item.processor}
-        />
-      </section>
-    ));
+  const filteredAndSortedProducts = products
+  .filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+  .sort((a, b) => {
+    if (sortOrder === "asc") {
+      return a.price - b.price;
+    } else if (sortOrder === "desc") {
+      return b.price - a.price;
+    } else {
+      return 0;
+    }
+  });
+
+const productsList = (
+  <section className={classes.popularProducts}>
+    {filteredAndSortedProducts.map((item) => (
+      <ProductBox
+        key={item.id}
+        id={item.id}
+        parentId={item.parentId}
+        name={item.name}
+        description={item.description}
+        price={item.price}
+        image={item.image}
+        processor={item.processor}
+      />
+    ))}
+  </section>
+);
+  
 
   const handleSearchInputChange = (event) => {
     setSearchTerm(event.target.value);
