@@ -89,7 +89,7 @@ input::placeholder {
 }
 
 .popularProducts div {
-  flex-basis: calc(33% - 1rem);
+  flex-basis: calc(50% - 1rem);
   padding-bottom: 1rem;
 }
 
