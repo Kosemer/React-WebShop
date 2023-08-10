@@ -19,7 +19,7 @@
   
   .imageBox {
     width: 100%;
-    height: 300px; /* példa érték */
+    height: 250px; 
     overflow: hidden;
     cursor: pointer;
   }

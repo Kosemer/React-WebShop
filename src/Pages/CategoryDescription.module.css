@@ -1,17 +1,20 @@
 .container {
-    width: 90%;
+    width: 70%;
     margin: 0 auto;
     padding-bottom: 3rem;
-    max-width: 60rem;
+    max-width: 70%;
+    text-align: center;
+    margin-top: 2rem;
 }
 
 .container h2 {
     color: #0066cc;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .description {
     color: rgb(58, 54, 54);
+    font-size: 0.9rem;
 }
 
 .p {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import ProductDetail from "../../Pages/ProductDetail";
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
@@ -8,7 +8,7 @@ import CartContext from "../../Store/cart-context";
 import ProductBox from "./ProductItem/ProductBox";
 
 const AvailableProducts = (props) => {
-  
+
 
   const cartCtx = useContext(CartContext);
 
@@ -48,40 +48,42 @@ const AvailableProducts = (props) => {
     };
     fetchProducts();
   }, [url]);
-  
 
 
-  const filteredAndSortedProducts = products
-  .filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  )
-  .sort((a, b) => {
-    if (sortOrder === "asc") {
-      return a.price - b.price;
-    } else if (sortOrder === "desc") {
-      return b.price - a.price;
-    } else {
-      return 0;
-    }
-  });
 
-const productsList = (
-  <section className={classes.popularProducts}>
-    {filteredAndSortedProducts.map((item) => (
-      <ProductBox
-        key={item.id}
-        id={item.id}
-        parentId={item.parentId}
-        name={item.name}
-        description={item.description}
-        price={item.price}
-        image={item.image}
-        processor={item.processor}
-      />
-    ))}
-  </section>
-);
-  
+  const filteredAndSortedProducts = useMemo(() => {
+    return products
+      .filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      .sort((a, b) => {
+        if (sortOrder === "asc") {
+          return a.price - b.price;
+        } else if (sortOrder === "desc") {
+          return b.price - a.price;
+        } else {
+          return 0;
+        }
+      });
+  }, [products, searchTerm, sortOrder]);
+
+  const productsList = (
+    <section className={classes.popularProducts}>
+      {filteredAndSortedProducts.map((item) => (
+        <ProductBox
+          key={item.id}
+          id={item.id}
+          parentId={item.parentId}
+          name={item.name}
+          description={item.description}
+          price={item.price}
+          image={item.image}
+          processor={item.processor}
+        />
+      ))}
+    </section>
+  );
+
 
   const handleSearchInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -92,59 +94,55 @@ const productsList = (
   };
 
   useEffect(() => {
-    setNoResults(productsList.length === 0 && !loadingSpinner);
-
-    /* if (productsList.length === 0 && !loadingSpinner) {
-      setNoResults(true);
-    } else {
-      setNoResults(false);
-    } */
-  }, [productsList, loadingSpinner]);
+    setNoResults(filteredAndSortedProducts.length === 0 && !loadingSpinner);
+  }, [filteredAndSortedProducts, loadingSpinner]);
 
   return (
     <div>
       {loadingSpinner && <LoadingSpinner></LoadingSpinner>}
       <section className={classes.products}>
-        {noResults ? (
-          <Card>
-            <div className={classes.noResults}>Nincs ilyen termék!</div>
-          </Card>
-        ) : (
-          <Card>
-            {/*category description */}
-            <div className={classes.categoryDescription}>
-              <h2 className={classes.title}>{props.title}</h2>
-              <p className={classes.description}>{props.description}</p>
+
+        <Card>
+          {/*category description */}
+          <div className={classes.categoryDescription}>
+            <h2 className={classes.title}>{props.title}</h2>
+            <p className={classes.description}>{props.description}</p>
+          </div>
+          {/*category description END */}
+          <div className={classes.filterBar}>
+            <div className={classes.searchBar}>
+              <input
+                type="text"
+                placeholder="Keresés..."
+                value={searchTerm}
+                onChange={handleSearchInputChange}
+              />
             </div>
-            {/*category description END */}
-            <div className={classes.filterBar}>
-              <div className={classes.searchBar}>
-                <input
-                  type="text"
-                  placeholder="Keresés..."
-                  value={searchTerm}
-                  onChange={handleSearchInputChange}
-                />
-              </div>
-              <div className={classes.sortBy}>
-                {/*<label htmlFor="sortOrder">Rendezés: </label>*/}
-                <select
-                  id="sortOrder"
-                  value={sortOrder}
-                  onChange={handleSortOrderChange}
-                >
-                  <option value="">Rendezés</option>
-                  <option value="asc">Ár szerint csökkenő</option>
-                  <option value="desc">Ár szerint növekvő</option>
-                </select>
-              </div>
-              <div className={classes.productCount}>
-                Összesen {productsList.length} termék.
-              </div>
+            <div className={classes.sortBy}>
+              {/*<label htmlFor="sortOrder">Rendezés: </label>*/}
+              <select
+                id="sortOrder"
+                value={sortOrder}
+                onChange={handleSortOrderChange}
+              >
+                <option value="">Rendezés</option>
+                <option value="asc">Ár szerint csökkenő</option>
+                <option value="desc">Ár szerint növekvő</option>
+              </select>
             </div>
-            {productsList}
-          </Card>
-        )}
+            <div className={classes.productCount}>
+              Összesen {filteredAndSortedProducts.length} termék.
+            </div>
+          </div>
+          {noResults ? (
+            <Card>
+              <div className={classes.noResults}>Nincs ilyen termék!</div>
+            </Card>
+          ) : (
+            productsList
+          )}
+        </Card>
+
 
         <ProductDetail products={products}></ProductDetail>
       </section>
