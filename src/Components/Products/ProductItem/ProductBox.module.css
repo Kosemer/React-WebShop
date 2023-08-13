@@ -121,6 +121,9 @@
       font-size: 1.2rem;
       font-weight: 600;
     }
+    .button{
+      width: 80%;
+    }
   }
   
   /*TABLET*/

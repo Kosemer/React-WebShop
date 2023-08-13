@@ -15,7 +15,7 @@
 }
 
 .cartImage {
-  max-height: 140px;
+  max-height: 180px;
   
 }
 
@@ -32,6 +32,7 @@
   margin-left: 1rem;
   margin-right: 1rem;
   padding: 5px 0px 5px 0px;
+  margin-bottom: 1rem;
 }
 
 .amount {
@@ -42,18 +43,25 @@
   padding: 5px;
   border-radius: 6px;
   color: #363636;
-  margin-right: 30px;
 }
 
-.priceBox{
-  width: 100%;
+.priceAndActions {
   display: flex;
-  margin-left: -140px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.priceBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .actions {
   display: flex;
-  
+  justify-content: center;
+  gap: 10px; /* Távolság a gombok között */
 }
 
 .cart-item button {
@@ -100,10 +108,11 @@
   }
 
   .cartImage {
-    max-height: 90px;
+    max-height: 160px;
     text-align: center;
     align-items: center;
   }
+  
   .price {
     font-size: 1.3rem;
     font-weight: bold;
@@ -124,14 +133,22 @@
     margin-right: 0px;
   }
   .summary {
-    width: 100%;
-    display: flex;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   }
   .priceBox{
     width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: 0px;
+    margin-top: 1rem;
+  }
+  .cart-item {
+
+    padding-bottom: 0rem;
   }
 }
 

@@ -22,6 +22,14 @@
 }
 
 @media screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+        margin: 0 auto;
+        padding-bottom: 3rem;
+        max-width: 90%;
+        text-align: center;
+        margin-top: 2rem;
+    }
     .container h2 {
         color: #0066cc;
         font-size: 1.3rem;
@@ -33,6 +41,17 @@
     }
 }
 
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
 
-@media (min-width: 768px) and (max-width: 991px) {}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        width: 90%;
+        margin: 0 auto;
+        padding-bottom: 3rem;
+        max-width: 90%;
+        text-align: center;
+        margin-top: 2rem;
+    }
+}

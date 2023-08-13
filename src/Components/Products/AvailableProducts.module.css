@@ -119,8 +119,8 @@ input::placeholder {
 /*MOBIL*/
 @media screen and (max-width: 767px) {
   .products {
-    max-width: 100%;
-    width: 100%;
+    max-width: 90%;
+    width: 90%;
     margin: 2rem auto;
     animation: products-appear 1s ease-out forwards;
   }
