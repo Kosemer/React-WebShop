@@ -10,6 +10,7 @@
 .container h2 {
     color: #0066cc;
     font-size: 1.5rem;
+    margin-top: 0rem;
 }
 
 .description {
@@ -33,6 +34,7 @@
     .container h2 {
         color: #0066cc;
         font-size: 1.3rem;
+        margin-top: 0rem;
     }
     .description {
         color: rgb(58, 54, 54);

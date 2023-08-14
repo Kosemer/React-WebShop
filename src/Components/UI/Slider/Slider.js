@@ -6,6 +6,9 @@ import withAutoplay from "react-awesome-slider/dist/autoplay";
 import image from "../../../Assets/alienware.jpg";
 import image2 from "../../../Assets/iphone14pro.jpg";
 import image3 from "../../../Assets/macBookPro.jpg";
+import image4 from "../../../Assets/mobileBackground.jpg";
+import image5 from "../../../Assets/mobileBackground2.jpeg";
+import image6 from "../../../Assets/mobileBackground3.jpg";
 
 const Slider = () => {
   const AutoplaySlider = withAutoplay(AwesomeSlider);
@@ -34,9 +37,9 @@ const Slider = () => {
       animation="foldOutAnimation"
       className={classes.awsBtn}
     >
-      <div data-src={image} />
-      <div data-src={image2} />
-      <div data-src={image3} />
+      <div data-src={image4} />
+      <div data-src={image5} />
+      <div data-src={image6} />
     </AutoplaySlider>
   );
 

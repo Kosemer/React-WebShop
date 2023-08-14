@@ -78,6 +78,16 @@
     font-size: 15px;
     margin-bottom: 1rem;
   }
+
+  textarea {
+    resize: none; /* Letiltja a felhasználó általi átméretezést */
+    width: 100%; /* Teljes szélességű legyen */
+    max-width: 100%; /* Ne nyúljon túl a szülő elem szélességén */
+    box-sizing: border-box; /* A padding és a border ne növelje a szélességet */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
   
 
   @media (max-width: 768px) {

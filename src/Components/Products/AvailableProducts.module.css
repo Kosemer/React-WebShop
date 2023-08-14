@@ -22,6 +22,11 @@ input::placeholder {
   font-weight: 600;
 }
 
+  .filterWrapper{
+    padding: 1rem 0.5rem;
+  }
+
+
 .filterBar {
   display: flex;
   justify-content: space-between;
@@ -140,6 +145,10 @@ input::placeholder {
     flex-direction: column;
     /* Oszlopokba rendeződik a szűrőelemek tartalma */
     text-align: center;
+  }
+
+  .filterWrapper{
+    padding: 0.5rem 0.5rem;
   }
 
   .searchBar,

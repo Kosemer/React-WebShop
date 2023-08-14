@@ -1,9 +1,16 @@
-import classes from './Card.module.css'
+import React from 'react';
+import classes from './Card.module.css';
 
 function Card(props) {
-    return ( 
-        <div className={`${classes.card} ${props.className}`}>{props.children}</div>
-    );
+  const cardStyle = {
+    padding: props.padding || '1rem', // Alapértelmezett padding vagy a kapott padding érték
+  };
+
+  return (
+    <div className={`${classes.card} ${props.className}`} style={cardStyle}>
+      {props.children}
+    </div>
+  );
 }
 
 export default Card;

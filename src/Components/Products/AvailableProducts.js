@@ -102,13 +102,14 @@ const AvailableProducts = (props) => {
       {loadingSpinner && <LoadingSpinner></LoadingSpinner>}
       <section className={classes.products}>
 
-        <Card>
+        <Card  padding="0rem">
           {/*category description */}
           <div className={classes.categoryDescription}>
             <h2 className={classes.title}>{props.title}</h2>
             <p className={classes.description}>{props.description}</p>
           </div>
           {/*category description END */}
+          <div className={classes.filterWrapper}>
           <div className={classes.filterBar}>
             <div className={classes.searchBar}>
               <input
@@ -133,6 +134,7 @@ const AvailableProducts = (props) => {
             <div className={classes.productCount}>
               Összesen {filteredAndSortedProducts.length} termék.
             </div>
+          </div>
           </div>
           {noResults ? (
             <Card>

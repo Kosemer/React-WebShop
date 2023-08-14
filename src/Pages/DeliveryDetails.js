@@ -308,10 +308,11 @@ function DeliveryDetails() {
               </label>
               <textarea
                 rows="10"
-                cols="120"
+                cols="90"
                 id="comment"
                 name="comment"
                 type="text"
+                className={classes.textarea}
               ></textarea>
             </div>
           </Card>
