@@ -36,9 +36,14 @@ const Order = () => {
 
   console.log(shipping)
 
+  const showOrderPage = !cartCtx.isCartEmpty || cartCtx.temporaryShippingMethod
+
+  console.log(showOrderPage)
+
+
   return (
     <Fragment>
-      {cartCtx.isCartEmpty && (
+      {showOrderPage && (
         <div>
           <div className={classes.progressBar}>
             <StepProgressBar></StepProgressBar>
@@ -68,7 +73,7 @@ const Order = () => {
           <p className={classes.text}>Vissza a <NavLink to="/"><strong className={classes.backToHome}>főoldalra</strong></NavLink>.</p>
         </div>
       )}
-      {!cartCtx.isCartEmpty && <EmptyCart></EmptyCart>}
+      {!showOrderPage && <EmptyCart></EmptyCart>}
     </Fragment>
   );
 };
