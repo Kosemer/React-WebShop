@@ -12,6 +12,8 @@ const Order = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const navigate = useNavigate();
+
   const cartCtx = useContext(CartContext);
 
   cartCtx.orderStatus.cart = false;
@@ -38,12 +40,20 @@ const Order = () => {
 
   const showOrderPage = !cartCtx.isCartEmpty || cartCtx.temporaryShippingMethod
 
-  console.log(showOrderPage)
+  const deliveryMethod = Boolean(cartCtx.temporaryShippingMethod) && Boolean(cartCtx.temporaryPaymentMethod);
+
+  console.log(deliveryMethod)
+
+  useEffect(() => {
+    if (!deliveryMethod) {
+      navigate("/delivery-method");
+    }
+  }, [deliveryMethod]);
 
 
   return (
     <Fragment>
-      {showOrderPage && (
+      {(showOrderPage) ? (
         <div>
           <div className={classes.progressBar}>
             <StepProgressBar></StepProgressBar>
@@ -72,8 +82,12 @@ const Order = () => {
           <p className={classes.text}>Várható szállítási határidő: <strong>{formatteddeliveryDate}</strong></p>
           <p className={classes.text}>Vissza a <NavLink to="/"><strong className={classes.backToHome}>főoldalra</strong></NavLink>.</p>
         </div>
+
+      ) : (
+        <Fragment>
+          {showOrderPage ? <EmptyCart /> : null}
+        </Fragment>
       )}
-      {!showOrderPage && <EmptyCart></EmptyCart>}
     </Fragment>
   );
 };

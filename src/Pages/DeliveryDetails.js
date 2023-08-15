@@ -10,6 +10,7 @@ import { getDatabase, ref, push, set } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import EmptyCart from "../Components/Order/EmptyCart";
 
+
 function DeliveryDetails() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,6 +32,14 @@ function DeliveryDetails() {
   const navigate = useNavigate();
 
   const cartCtx = useContext(CartContext);
+
+  const deliveryMethod = Boolean(cartCtx.temporaryShippingMethod) && Boolean(cartCtx.temporaryPaymentMethod);
+
+  useEffect(() => {
+    if (!deliveryMethod) {
+      navigate("/delivery-method");
+    }
+  }, [deliveryMethod]);
 
   // A számlázási és szállítási adatok megegyeznek.
   const [deliveryDetailsShow, setDeliveryDetailsShow] = useState(false);
