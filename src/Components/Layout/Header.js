@@ -1,4 +1,4 @@
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useState, useEffect } from "react";
 import classes from "./Header.module.css";
 //import blueImage from "../../Assets/bluePicture.jpg";
 //import logoutIcon from "../../Assets/logoutIcon.png";
@@ -21,7 +21,7 @@ function Header(props) {
 
   //MOBILNÉZETBEN KOMPONENSEK ELTÜNTETÉSE
 
-  const headerClasses = `${classes.header} ${cssMobile ? classes.active : ""}`;
+  //const headerClasses = `${classes.header} ${cssMobile ? classes.active : ""}`;
 
   const navigate = useNavigate();
 
@@ -37,6 +37,26 @@ function Header(props) {
   /*const cartHandler = () => {
     navigate("/kosar");
   };*/
+
+  const [scrolling, setScrolling] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      setScrolling(prevScrollPos > currentScrollPos);
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
+  const headerClasses = `${classes.header} ${
+    cssMobile || scrolling ? classes.active : ""
+  } ${scrolling ? "" : classes.headerHidden}`;
 
   return (
     <Fragment>

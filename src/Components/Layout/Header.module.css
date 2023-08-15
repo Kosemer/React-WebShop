@@ -13,8 +13,14 @@
   padding: 0 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 20;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
+
+.headerHidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
 
 .header nav {
   height: 100%;
