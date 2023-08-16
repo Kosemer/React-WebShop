@@ -1,10 +1,12 @@
 import classes from "./ProductDetailLayout.module.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartContext from "../../Store/cart-context";
 import calendarIcon from "../../Assets/calendarIcon.ico";
 import locationIcon from "../../Assets/locationIcon.ico";
 
 function ProductDetailLayout(props) {
+
+  const { id } = props;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -12,7 +14,7 @@ function ProductDetailLayout(props) {
 
   const cartCtx = useContext(CartContext);
   const addToCartHandler = () => {
-    cartCtx.addItem({
+   const newItem = {
       id: props.id,
       name: props.name,
       amount: 1,
@@ -21,13 +23,49 @@ function ProductDetailLayout(props) {
       image: props.image,
       memory: props.memory,
       connectivity: props.connectivity,
-    });
+    };
+    cartCtx.addItem(newItem);
+    if (animatedButtonId === null) {
+      setButtonIsAnimated(true);
+      const timer = setTimeout(() => {
+        setButtonIsAnimated(false);
+      }, 300);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
   };
+
+  const [buttonIsAnimated, setButtonIsAnimated] = useState(false)
+  const [animatedButtonId, setAnimatedButtonId] = useState(null);
+
+  const {items} = cartCtx;
+  
+
+  const btnClasses = `${classes.addToCartButton} ${buttonIsAnimated ? classes.bump : ''}`
+
+  useEffect(() => {
+    if(items.length === 0 || id !== animatedButtonId){
+      return
+    }
+    setButtonIsAnimated(true) // Amikor true akkor hozzáadja a "classes.bump" a "btnClasses"-hoz és lefut az animáció.
+
+    const timer = setTimeout(() => {
+      setButtonIsAnimated(false) // Amikor ez false akkor egy üres karakterláncot fog hozzáadni a btnClasses-hoz, tehát az értéke "classes.button" lesz és így nem játsza le az animációt.
+    }, 300)
+    // Teszek bele egy "tisztítás" funkciót, ez arra jó, hogy tőrlöm az időzítőt, ha a gomb elemet el kell távolítani. Ebben az alkalmazásban nem lesz haszna, mert ez a gomb mindig ott van, csak egy kis gyakorlásnak csinálom.
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [items, id, animatedButtonId])
+
   const price = props.price.toLocaleString("hu-HU", {
     style: "currency",
     currency: "HUF",
     maximumFractionDigits: 0,
   });
+
+
   return (
     <div className={classes.card}>
       <li className={classes.product}>
@@ -42,7 +80,7 @@ function ProductDetailLayout(props) {
           <div className={classes.price}>{price}</div>
           <h3 className={classes.inStock}>&#10004; Készleten</h3>
           <button
-            className={classes.addToCartButton}
+            className={btnClasses}
             onClick={addToCartHandler}
           >
             Kosárba teszem
