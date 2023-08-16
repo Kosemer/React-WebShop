@@ -3,6 +3,7 @@ import classes from "./ProductBox.module.css";
 import CartContext from "../../../Store/cart-context";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const ProductBox = (props) => {
   const { id, name, price, image, processor, memory, connectivity, parentId } = props;
@@ -36,7 +37,39 @@ const ProductBox = (props) => {
       //connectivity: connectivity,
     };
     cartCtx.addItem(newItem);
+    if (animatedButtonId === null) {
+      setButtonIsAnimated(true);
+      const timer = setTimeout(() => {
+        setButtonIsAnimated(false);
+      }, 300);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
   };
+
+  const [buttonIsAnimated, setButtonIsAnimated] = useState(false)
+  const [animatedButtonId, setAnimatedButtonId] = useState(null);
+
+  const {items} = cartCtx;
+  
+
+  const btnClasses = `${classes.button} ${buttonIsAnimated ? classes.bump : ''}`
+
+  useEffect(() => {
+    if(items.length === 0 || id !== animatedButtonId){
+      return
+    }
+    setButtonIsAnimated(true) // Amikor true akkor hozzáadja a "classes.bump" a "btnClasses"-hoz és lefut az animáció.
+
+    const timer = setTimeout(() => {
+      setButtonIsAnimated(false) // Amikor ez false akkor egy üres karakterláncot fog hozzáadni a btnClasses-hoz, tehát az értéke "classes.button" lesz és így nem játsza le az animációt.
+    }, 300)
+    // Teszek bele egy "tisztítás" funkciót, ez arra jó, hogy tőrlöm az időzítőt, ha a gomb elemet el kell távolítani. Ebben az alkalmazásban nem lesz haszna, mert ez a gomb mindig ott van, csak egy kis gyakorlásnak csinálom.
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [items, id, animatedButtonId])
 
   return (
     <div className={classes.product}>
@@ -48,7 +81,7 @@ const ProductBox = (props) => {
       </section>
       <div className={classes.priceAndButton}>
         <p className={classes.price}>{priceFomat}</p>
-        <button className={classes.button} onClick={addToCartHandler}>
+        <button className={btnClasses} onClick={addToCartHandler}>
           Kosárba
         </button>
       </div>

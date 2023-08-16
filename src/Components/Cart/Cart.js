@@ -58,7 +58,7 @@ function Cart(props) {
   );
 
   return (
-    <Modal>
+    <Modal hideCartHandler={props.hideCartHandler}>
       {cartItems}
       <div className={classes.total}>
         <p className={classes.totalAmountTitle}>Teljes összeg:</p>

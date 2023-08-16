@@ -54,9 +54,18 @@ function Header(props) {
     };
   }, [prevScrollPos]);
 
-  const headerClasses = `${classes.header} ${
+  /*const headerClasses = `${classes.header} ${
     cssMobile || scrolling ? classes.active : ""
-  } ${scrolling ? "" : classes.headerHidden}`;
+  } ${scrolling ? "" : classes.headerHidden}`;*/
+
+  // Mobilos menü stílus
+const mobileMenuClasses = cssMobile ? classes.active : "";
+
+// Fejléc eltüntetése görgetéskor stílus
+const hiddenHeaderClasses = scrolling ? "" : classes.headerHidden;
+
+// Végül a két stílus kombinálása
+const headerClasses = `${classes.header} ${mobileMenuClasses} ${hiddenHeaderClasses}`;
 
   return (
     <Fragment>
