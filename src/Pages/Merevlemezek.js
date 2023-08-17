@@ -4,7 +4,6 @@ import Card from "../Components/UI/Card";
 import { useEffect } from "react";
 
 function Merevlemezek() {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -15,18 +14,18 @@ function Merevlemezek() {
     <div>
       <Card className={classes.container}>
         <div>
-          <h2>Merevlemezek (winchesterek)</h2>
+          <h2>SSD meghajtók</h2>
           <p className={classes.description}>
             {" "}
-            A merevlemezt (amit sokszor winchester vagy háttértár néven is
-            emlegetnek) számítógép, laptop és egyéb eszközök adatainak
-            tárolására és biztonsági mentésére használják. A merevlemez lehet
-            belső háttértár vagy külső háttértár. Belső merevlemezt akkor
-            használunk, ha számítógépet építünk, vagy bővíteni kell a tárhelyét.
-            A külső winchester alkalmas olyan adatok tárolására, mint például
-            filmek, fényképek, zene vagy biztonsági mentések. A külső winchester
-            az asztali számítógéphez, laptophoz és TV-hez általában USB-n
-            keresztül csatlakozik.
+            Az SSD meghajtók (Solid-State Drive) korszerű és hatékony
+            adattárolási eszközök, amelyek jelentős előrelépést jelentenek a
+            hagyományos merevlemezekhez képest. Az SSD-k lényegében nincsenek
+            mozgó alkatrészek, mivel adataikat villamos töltések formájában
+            tárolják. Az SSD meghajtók különböző kapacitásokban és formátumokban
+            elérhetők, és széles körű alkalmazásokban használhatók, beleértve a
+            számítógépek, laptopok, játékkonzolok és szerverek felgyorsítását.
+            Az SSD-k általánosságban a modern adattárolás megbízható és gyors
+            megoldását kínálják.
           </p>
         </div>
       </Card>
