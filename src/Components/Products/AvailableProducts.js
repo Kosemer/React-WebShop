@@ -127,8 +127,8 @@ const AvailableProducts = (props) => {
                 onChange={handleSortOrderChange}
               >
                 <option value="">Rendezés</option>
-                <option value="asc">Ár szerint csökkenő</option>
-                <option value="desc">Ár szerint növekvő</option>
+                <option value="desc">Ár szerint csökkenő</option>
+                <option value="asc">Ár szerint növekvő</option>
               </select>
             </div>
             <div className={classes.productCount}>

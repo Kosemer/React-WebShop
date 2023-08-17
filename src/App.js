@@ -102,7 +102,7 @@ function App() {
         <Route path="rendeles" element={<Order></Order>}></Route>
       </Routes>
       <main></main>
-      <Footer></Footer>
+      {!isLoginForm  && <Footer></Footer>}
     </CartProvider>
   );
 }
