@@ -100,28 +100,28 @@ function Footer() {
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/" className={classes.linkText}>
-              Galéria
+            <NavLink to="/alaplapok" className={classes.linkText}>
+              Alaplap
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="" className={classes.linkText}>
-              Árak
+            <NavLink to="/memoriak" className={classes.linkText}>
+              Memória
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/" className={classes.linkText}>
-              Rólam
+            <NavLink to="/merevlemezek" className={classes.linkText}>
+              SSD meghajtó
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/" className={classes.linkText}>
-              Kapcsolat
+            <NavLink to="/processzorok" className={classes.linkText}>
+              Processzor
             </NavLink>
           </div>
           <div className={classes.linkContainer}>
-            <NavLink to="/" className={classes.linkText}>
-              Admin
+            <NavLink to="/videokartyak" className={classes.linkText}>
+              Videókártya
             </NavLink>
           </div>
         </div>

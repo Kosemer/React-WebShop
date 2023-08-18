@@ -108,7 +108,7 @@ const headerClasses = `${classes.header} ${mobileMenuClasses} ${hiddenHeaderClas
                     }
                     to="/merevlemezek"
                   >
-                    SSD meghajtók
+                    SSD meghajtó
                   </NavLink>
                 </li>
                 <li>

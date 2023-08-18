@@ -97,7 +97,7 @@ const Home = () => {
               className={classes.boxesIcon}
               alt="hardDrive"
             ></img>
-            Merevlemezek
+            SSD meghajtók
           </div>
           <div onClick={() => navigateClick("processzorok")}>
             <img
@@ -126,10 +126,6 @@ const Home = () => {
           <div onClick={() => navigateClick("memoriak")}>
             <img src={ram} className={classes.boxesIcon} alt="ram"></img>
             Memóriák
-          </div>
-          <div onClick={() => navigateClick("merevlemezek")}>
-            <img src={cooler} className={classes.boxesIcon} alt="cooler"></img>
-            Hűtés
           </div>
         </section>
         <h2 className={classes.title}>Népszerű termékek</h2>

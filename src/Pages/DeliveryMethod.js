@@ -40,6 +40,7 @@ function DeliveryMethod() {
     } else {
       cartCtx.setShowErrorMessage(!cartCtx.selectedShippingMethod);
       cartCtx.setShowPaymentErrorMessage(!cartCtx.selectedPaymentMethod);
+      window.scrollTo(0, 0);
     }
   };
 
