@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+<h1 align="center">Webshop</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
+<br>
 
-## Available Scripts
+# Description:
 
-In the project directory, you can run:
+As an exercise I created a simple technical webshop. It sells computer components.
+ You can find the complete, finished project in the "GoodContinue" branch.
 
-### `npm start`
+<h3>Main features:</h3>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `Login interface`
+- `Add to cart and remove`
+- `Product search function`
+- `Sort products in descending or ascending order`
+- `Choice of delivery and payment method`
+- `Calculation of delivery costs, "free" above HUF 100.000`
+- `Payment process tracking in the progress bar`
+- `Empty basket indication via form`
+- `Protect summary and payment pages if data is not filled in or the shopping cart is empty`
+- `Responsive`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# Tech Stack:
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) 
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) 
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Link:
 
-### `npm run build`
+Coming soon...
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image10](https://github.com/Kosemer/React-WebShop/assets/82768146/5a6c4831-1091-49c2-b5d6-738adea0ce5e)
+![image](https://github.com/Kosemer/React-WebShop/assets/82768146/16d81eec-0a11-4dbb-a73d-65c0c454350f)
+![image2](https://github.com/Kosemer/React-WebShop/assets/82768146/c1131f3e-4852-42dc-b197-01c747a884b2)
+![image3](https://github.com/Kosemer/React-WebShop/assets/82768146/3b70e029-f36b-413f-a3ba-1f488124ff3c)
+![image4](https://github.com/Kosemer/React-WebShop/assets/82768146/f4a845ca-e6ce-48c9-8ca6-ce826adc36df)
+![image5](https://github.com/Kosemer/React-WebShop/assets/82768146/f5b1bd3b-fe4b-4d3b-973f-145cbc9bf5fe)
+![image6](https://github.com/Kosemer/React-WebShop/assets/82768146/68cda6a8-8814-4aa5-888e-27f16e29b45c)
+![image7](https://github.com/Kosemer/React-WebShop/assets/82768146/26813f4a-1ae4-46d9-8c6d-6b8287eb8133)
+![image8](https://github.com/Kosemer/React-WebShop/assets/82768146/1ebc445f-1e6b-43fd-a37f-255dc17d79cb)
+![image9](https://github.com/Kosemer/React-WebShop/assets/82768146/03569494-ea8f-4bb9-9e50-854bb498e251)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![image11](https://github.com/Kosemer/React-WebShop/assets/82768146/0b485465-7fe2-46a6-884e-3f21f551b975)
+![image12](https://github.com/Kosemer/React-WebShop/assets/82768146/4a3d9d7b-2864-4403-935a-32cb551e8542)
+![image13](https://github.com/Kosemer/React-WebShop/assets/82768146/8f37b0ad-4107-4373-8c81-75aee9e83553)
+![image14](https://github.com/Kosemer/React-WebShop/assets/82768146/4ef18aa2-a71e-453d-aac3-ba9cbffe0700)
+![image15](https://github.com/Kosemer/React-WebShop/assets/82768146/4c0f7b75-3065-4345-a599-ea3ef7a53ca9)
+![image16](https://github.com/Kosemer/React-WebShop/assets/82768146/c19ae158-ad07-4e3b-8087-e9a07af55a00)
